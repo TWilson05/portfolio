@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyler Wilson - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page {
+            display: none;
+            margin-top: 80px;
+            padding: 2rem 0;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            background: #fff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+        }
+
+        /* Experience Cards */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-item h3 {
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item ul {
+            margin-left: 20px;
+        }
+
+        .experience-item .duration {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-item h3 {
+            color: #3498db;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .degree {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .year {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .award-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #f39c12;
+        }
+
+        .award-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .award-card .year {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Projects List Page */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-list-item {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-list-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-list-item .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-list-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-list-item .date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .project-list-item p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-list-item .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .tech-tag {
+            font-size: 0.8rem;
+            background: #ecf0f1;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            color: #555;
+        }
+
+        /* Project Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 2rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #7f8c8d;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: #2c3e50;
+        }
+
+        /* Resume Download Button */
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #27ae60;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #229954;
+        }
+
+        /* Educational Resources */
+        .resource-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .resource-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .resource-item .info h3 {
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .resource-item .info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .resource-btn {
+            padding: 0.5rem 1rem;
+            background: #e74c3c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .resource-btn:hover {
+            background: #c0392b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .project-list-item .project-header {
+                flex-direction: column;
+            }
+
+            .project-list-item .date {
+                margin-left: 0;
+                margin-top: 0.3rem;
+            }
+
+            .resource-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>Your Name</h1>
+            <ul>
+                <li><a href="#" data-page="home">Home</a></li>
+                <li><a href="#" data-page="projects">Projects</a></li>
+                <li><a href="#" data-page="resources">Educational Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="container">
+            <div class="hero">
+                <h2>Tyler Wilson</h2>
+                <p>tb.wilson05@gmail.com | 604-230-6334</p>
+            </div>
+
+            <!-- About Me Section -->
+            <section id="about">
+                <h2>About Me</h2>
+                <p>Placeholder</p>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience">
+                <h2>Previous Experience</h2>
+                <div class="experience-item">
+                    <h3>Data Scientist - Health Canada</h3>
+                    <p class="duration">May 2024 - August 2024</p>
+                    <ul>
+                        <li>Built a localized Retrieval Augmented Generation (RAG) model to extract insights from confidential Covid-19 data.</li>
+                        <li>Created an open-source Python library to streamline the development of RAG pipelines for future projects.</li>
+                        <li>Helped develop an AI chatbot using a RAG model, improving company database navigation satisfaction for 70% of users.</li>
+                    <ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Instructional Designer - UBC Physics and Astronomy</h3>
+                    <p class="duration">May 2023 - January 2025</p>
+                    <ul>
+                        <li>Worked with a team to improve and redesign UBC’s Physics 158 course, taken by over 1000 students annually.</li>
+                        <li>Created a repository of custom-made and refurbished homework problems using LaTeX and Tikz.</li>
+                        <li>Contributed to structural changes to how the course is delivered based on student and instructor feedback.</li>
+                        <li>Compared student survey and course data to previous years to determine the effectiveness of the changes implemented.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Data Engineer - Matt3r</h3>
+                    <p class="duration">May 2023 - August 2023</p>
+                    <ul>
+                        <li>Wrote an algorithm on an embedded-ML chip that classifies vehicle left/right turns in real-time with 95% precision.</li>
+                        <li>Implemented a KNN algorithm with Dynamic Time Warping to classify time-series internal measurement unit data.</li>
+                        <li>Trained the KNN on K-means clustered data to decrease size and runtime of the model without compromising performance.</li>
+                        <li>Created a cron job in AWS for continuous monitoring of the performance of the classification algorithm.</li>
+                        <li>Conducted firmware experiments to identify and rectify time drift issues between the gyroscope and system clock.</li>
+                        <li>Improved the AHRS gravity compensation algorithm accuracy through cross-comparison with Tesla’s vehicle log data.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Open Education Resource Developer - UBC Mechanical Engineering</h3>
+                    <p class="duration">May 2023 - August 2023</p>
+                    <ul>
+                        <li>Created 50 open-source mechanics problems programmed using WeBWorK for an online textbook and university courses.</li>
+                        <li>Presented at ASEE conference on benefits of problem creation in education, placing 2nd.</li>
+                        <li>Corrected issues in questions being tested in UVic and Douglas College Physics courses.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>University of British Columbia</h3>
+                    <p class="degree">Master of Science in Geophysics</p>
+                    <p class="year">2025 - Present</p>
+                    <p>Specialized in glaciology.</p>
+                </div>
+                <div class="education-item">
+                    <h3>University of British Columbia</h3>
+                    <p class="degree">Bachelor of Applied Science in Engineering Physics</p>
+                    <p class="year">2020 - 2025</p>
+                    <p>Graduated with honors and Wesbrook Scholar distinction; UBC's premier undergraduate award. </p>
+                </div>
+            </section>
+
+            <!-- Awards Section -->
+            <section id="awards">
+                <h2>Awards & Recognitions</h2>
+                <div class="awards-grid">
+                    <div class="award-card">
+                        <h3>John H. Mitchell Scholarship</h3>
+                        <p class="year">2024</p>
+                        <p>Awarded to student-athletes with outstanding academic performance and community involvement.</p>
+                    </div>
+                    <div class="award-card">
+                        <h3>Wesbrook Scholar</h3>
+                        <p class="year">2024</p>
+                        <p>UBC's most prestigious undergraduate designation offered to senior students with outstanding academic performance, leadership, and involvement in student and community activities.</p>
+                    </div>
+                    <div class="award-card">
+                        <h3>Ahmad Bhimani Memorial Scholarship</h3>
+                        <p class="year">2023</p>
+                    </div>
+                    <div class="award-card">
+                        <h3>Trek Scholarship</h3>
+                        <p class="year">2023</p>
+                        <p>Annual scholarship awarded to the top 5% of students per faculty</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resume Download Section -->
+            <section id="resume">
+                <h2>Resume</h2>
+                <p>Download my complete resume to learn more about my experience, skills, and qualifications.</p>
+                <a href="TylerWilsonResume.pdf" class="download-btn" onclick="alert('Resume download would start here. Replace with actual PDF link.'); return false;">📄 Download Resume (PDF)</a>
+            </section>
+        </div>
+    </div>
+
+    <!-- Projects Page -->
+    <div id="projects" class="page">
+        <div class="container">
+            <section>
+                <h2>All Projects</h2>
+                <p style="margin-bottom: 2rem; color: #666;">A comprehensive list of projects I've worked on, sorted by date. Click on any project to view detailed information.</p>
+                <div class="projects-list">
+                    <div class="project-list-item" onclick="openProject(1)">
+                        <div class="project-header">
+                            <div>
+                                <h3>E-Commerce Platform</h3>
+                                <p class="date">January 2024 - Present</p>
+                            </div>
+                        </div>
+                        <p>A full-featured online shopping platform with payment integration and inventory management.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe API</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                    </div>
+
+                    <div class="project-list-item" onclick="openProject(2)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Task Management App</h3>
+                                <p class="date">June 2023 - December 2023</p>
+                            </div>
+                        </div>
+                        <p>A collaborative task management tool with real-time updates and team collaboration features.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">WebSockets</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="project-list-item" onclick="openProject(3)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Portfolio Website Builder</h3>
+                                <p class="date">January 2023 - May 2023</p>
+                            </div>
+                        </div>
+                        <p>A drag-and-drop website builder specifically designed for creative professionals.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">AWS S3</span>
+                        </div>
+                    </div>
+
+                    <div class="project-list-item" onclick="openProject(4)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Analytics Dashboard</h3>
+                                <p class="date">August 2022 - December 2022</p>
+                            </div>
+                        </div>
+                        <p>A data visualization dashboard for tracking business metrics and KPIs in real-time.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                    </div>
+
+                    <div class="project-list-item" onclick="openProject(5)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Mobile Fitness Tracker</h3>
+                                <p class="date">March 2022 - July 2022</p>
+                            </div>
+                        </div>
+                        <p>A cross-platform mobile app for tracking workouts, nutrition, and fitness goals.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Redux</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <div class="project-list-item" onclick="openProject(6)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Social Media Dashboard</h3>
+                                <p class="date">October 2021 - February 2022</p>
+                            </div>
+                        </div>
+                        <p>A unified dashboard for managing multiple social media accounts and scheduling posts.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">OAuth</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Educational Resources Page -->
+    <div id="resources" class="page">
+        <div class="container">
+            <section>
+                <h2>Educational Resources</h2>
+                <p style="margin-bottom: 2rem;">Here are some educational materials, guides, and documents I've created to share knowledge with the community.</p>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <div class="info">
+                            <h3>JavaScript Best Practices Guide</h3>
+                            <p>A comprehensive guide covering modern JavaScript development practices and patterns.</p>
+                        </div>
+                        <a href="#" class="resource-btn" onclick="alert('PDF download would start here. Replace with actual PDF link.'); return false;">Download PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="info">
+                            <h3>React Hooks Tutorial</h3>
+                            <p>Step-by-step tutorial on using React Hooks effectively in your applications.</p>
+                        </div>
+                        <a href="#" class="resource-btn" onclick="alert('PDF download would start here. Replace with actual PDF link.'); return false;">Download PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="info">
+                            <h3>CSS Grid and Flexbox Cheat Sheet</h3>
+                            <p>Quick reference guide for CSS Grid and Flexbox layout techniques.</p>
+                        </div>
+                        <a href="#" class="resource-btn" onclick="alert('PDF download would start here. Replace with actual PDF link.'); return false;">Download PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="info">
+                            <h3>Web Performance Optimization</h3>
+                            <p>Techniques and strategies for optimizing website performance and loading times.</p>
+                        </div>
+                        <a href="#" class="resource-btn" onclick="alert('PDF download would start here. Replace with actual PDF link.'); return false;">Download PDF</a>
+                    </div>
+                    <div class="resource-item">
+                        <div class="info">
+                            <h3>Git Workflow Guide</h3>
+                            <p>Best practices for using Git in team environments with branching strategies.</p>
+                        </div>
+                        <a href="#" class="resource-btn" onclick="alert('PDF download would start here. Replace with actual PDF link.'); return false;">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProject()">&times;</button>
+            <div id="projectDetails"></div>
+        </div>
+    </div>
+
+    <script>
+        // Project data
+        const projects = {
+            1: {
+                title: "E-Commerce Platform",
+                date: "January 2024 - Present",
+                description: "A comprehensive e-commerce solution built from the ground up.",
+                fullDescription: "This project involved creating a full-featured online shopping platform with integrated payment processing, inventory management, and customer relationship management. The platform handles thousands of transactions daily and provides a seamless shopping experience across all devices.",
+                technologies: ["React", "Node.js", "MongoDB", "Stripe API", "AWS"],
+                features: [
+                    "Secure payment processing with Stripe integration",
+                    "Real-time inventory tracking",
+                    "Advanced search and filtering",
+                    "Customer reviews and ratings",
+                    "Admin dashboard for order management",
+                    "Responsive design for mobile and desktop"
+                ],
+                challenges: "The main challenge was ensuring scalability during peak shopping seasons while maintaining fast load times and secure transactions.",
+                outcome: "Successfully launched with 10,000+ active users in the first month. Achieved 99.9% uptime and average page load time under 2 seconds."
+            },
+            2: {
+                title: "Task Management App",
+                date: "June 2023 - December 2023",
+                description: "A collaborative platform for team productivity.",
+                fullDescription: "Developed a real-time task management application that helps teams collaborate more effectively. The app features drag-and-drop functionality, real-time updates, and integration with popular tools.",
+                technologies: ["Vue.js", "Firebase", "WebSockets", "Tailwind CSS"],
+                features: [
+                    "Real-time collaboration with live updates",
+                    "Drag-and-drop task organization",
+                    "Project timelines and Gantt charts",
+                    "File attachments and comments",
+                    "Team member assignments and notifications",
+                    "Integration with Slack and email"
+                ],
+                challenges: "Implementing real-time synchronization across multiple users while preventing conflicts and ensuring data consistency.",
+                outcome: "Adopted by 50+ companies with positive feedback on improved team productivity by an average of 30%."
+            },
+            3: {
+                title: "Portfolio Website Builder",
+                date: "January 2023 - May 2023",
+                description: "An intuitive tool for creating stunning portfolio websites.",
+                fullDescription: "Created a drag-and-drop website builder specifically tailored for creative professionals who want to showcase their work without coding knowledge.",
+                technologies: ["React", "Next.js", "PostgreSQL", "AWS S3"],
+                features: [
+                    "Drag-and-drop interface builder",
+                    "Pre-designed templates for various industries",
+                    "Custom domain support",
+                    "SEO optimization tools",
+                    "Analytics integration",
+                    "Media gallery with automatic optimization"
+                ],
+                challenges: "Balancing ease of use with customization options while ensuring generated sites are fast and SEO-friendly.",
+                outcome: "Over 5,000 portfolios created within six months. Featured in several design blogs and communities."
+            },
+            4: {
+                title: "Analytics Dashboard",
+                date: "August 2022 - December 2022",
+                description: "A powerful tool for visualizing business metrics.",
+                fullDescription: "Built a comprehensive analytics dashboard that aggregates data from multiple sources and presents it through interactive visualizations.",
+                technologies: ["React", "D3.js", "Python", "Flask", "Redis"],
+                features: [
+                    "Real-time data visualization",
+                    "Customizable widget-based layout",
+                    "Data export functionality",
+                    "Automated report generation",
+                    "Multiple data source integration",
+                    "Role-based access control"
+                ],
+                challenges: "Processing and visualizing large datasets in real-time while maintaining smooth interactions and quick load times.",
+                outcome: "Reduced reporting time by 70% for clients. Enabled data-driven decision making across multiple departments."
+            },
+            5: {
+                title: "Mobile Fitness Tracker",
+                date: "March 2022 - July 2022",
+                description: "A comprehensive fitness tracking application.",
+                fullDescription: "Developed a cross-platform mobile application that helps users track their fitness journey, including workouts, nutrition, and progress photos.",
+                technologies: ["React Native", "Redux", "Node.js", "MongoDB"],
+                features: [
+                    "Workout logging and history",
+                    "Nutrition tracking with barcode scanner",
+                    "Progress photos and measurements",
+                    "Custom workout plans",
+                    "Social sharing and challenges",
+                    "Integration with wearable devices"
+                ],
+                challenges: "Creating a seamless experience across iOS and Android while handling offline functionality and data synchronization.",
+                outcome: "Downloaded by 25,000+ users in the first three months with 4.7-star rating on both app stores."
+            },
+            6: {
+                title: "Social Media Dashboard",
+                date: "October 2021 - February 2022",
+                description: "A unified platform for social media management.",
+                fullDescription: "Built a comprehensive dashboard that allows users to manage multiple social media accounts from one place, schedule posts, and track engagement metrics.",
+                technologies: ["Angular", "TypeScript", "OAuth", "PostgreSQL"],
+                features: [
+                    "Multi-account management",
+                    "Post scheduling and queue",
+                    "Analytics and engagement tracking",
+                    "Content calendar view",
+                    "Team collaboration tools",
+                    "Automated reporting"
+                ],
+                challenges: "Integrating with multiple social media APIs while handling rate limits and maintaining real-time updates.",
+                outcome: "Used by 100+ marketing teams and agencies. Reduced social media management time by 60%."
+            }
+        };
+
+        // Navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageName = this.getAttribute('data-page');
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(pageName).classList.add('active');
+            });
+        });
+
+        // Project modal functions
+        function openProject(projectId) {
+            const project = projects[projectId];
+            const modal = document.getElementById('projectModal');
+            const detailsDiv = document.getElementById('projectDetails');
+            
+            let featuresHTML = project.features.map(f => `<li>${f}</li>`).join('');
+            let techHTML = project.technologies.map(t => `<span style="display: inline-block; background: #3498db; color: white; padding: 0.3rem 0.8rem; margin: 0.2rem; border-radius: 5px; font-size: 0.9rem;">${t}</span>`).join('');
+            
+            detailsDiv.innerHTML = `
+                <h2 style="color: #2c3e50; margin-bottom: 0.5rem;">${project.title}</h2>
+                <p style="color: #7f8c8d; font-style: italic; margin-bottom: 1rem;">${project.date}</p>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">${project.fullDescription}</p>
+                
+                <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Technologies Used</h3>
+                <div style="margin-bottom: 1.5rem;">${techHTML}</div>
+                
+                <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Key Features</h3>
+                <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">${featuresHTML}</ul>
+                
+                <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Challenges</h3>
+                <p style="margin-bottom: 1.5rem;">${project.challenges}</p>
+                
+                <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Outcome</h3>
+                <p style="margin-bottom: 1rem;">${project.outcome}</p>
+            `;
+            
+            modal.classList.add('active');
+        }
