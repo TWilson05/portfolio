@@ -53,6 +53,7 @@
             color: #fff;
             text-decoration: none;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -165,11 +166,11 @@
             font-style: italic;
         }
 
-        /* Awards Section */
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
+        /* Awards Section - Linear Layout */
+        .awards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .award-card {
@@ -385,17 +386,13 @@
                 align-items: flex-start;
                 gap: 1rem;
             }
-
-            .awards-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="container">
-            <h1>Your Name</h1>
+            <h1>Tyler Wilson</h1>
             <ul>
                 <li><a href="#" data-page="home">Home</a></li>
                 <li><a href="#" data-page="projects">Projects</a></li>
@@ -428,13 +425,13 @@
                         <li>Built a localized Retrieval Augmented Generation (RAG) model to extract insights from confidential Covid-19 data.</li>
                         <li>Created an open-source Python library to streamline the development of RAG pipelines for future projects.</li>
                         <li>Helped develop an AI chatbot using a RAG model, improving company database navigation satisfaction for 70% of users.</li>
-                    <ul>
+                    </ul>
                 </div>
                 <div class="experience-item">
                     <h3>Instructional Designer - UBC Physics and Astronomy</h3>
                     <p class="duration">May 2023 - January 2025</p>
                     <ul>
-                        <li>Worked with a team to improve and redesign UBC’s Physics 158 course, taken by over 1000 students annually.</li>
+                        <li>Worked with a team to improve and redesign UBC's Physics 158 course, taken by over 1000 students annually.</li>
                         <li>Created a repository of custom-made and refurbished homework problems using LaTeX and Tikz.</li>
                         <li>Contributed to structural changes to how the course is delivered based on student and instructor feedback.</li>
                         <li>Compared student survey and course data to previous years to determine the effectiveness of the changes implemented.</li>
@@ -449,7 +446,7 @@
                         <li>Trained the KNN on K-means clustered data to decrease size and runtime of the model without compromising performance.</li>
                         <li>Created a cron job in AWS for continuous monitoring of the performance of the classification algorithm.</li>
                         <li>Conducted firmware experiments to identify and rectify time drift issues between the gyroscope and system clock.</li>
-                        <li>Improved the AHRS gravity compensation algorithm accuracy through cross-comparison with Tesla’s vehicle log data.</li>
+                        <li>Improved the AHRS gravity compensation algorithm accuracy through cross-comparison with Tesla's vehicle log data.</li>
                     </ul>
                 </div>
                 <div class="experience-item">
@@ -476,14 +473,14 @@
                     <h3>University of British Columbia</h3>
                     <p class="degree">Bachelor of Applied Science in Engineering Physics</p>
                     <p class="year">2020 - 2025</p>
-                    <p>Graduated with honors and Wesbrook Scholar distinction; UBC's premier undergraduate award. </p>
+                    <p>Graduated with honors and Wesbrook Scholar distinction; UBC's premier undergraduate award.</p>
                 </div>
             </section>
 
             <!-- Awards Section -->
             <section id="awards">
                 <h2>Awards & Recognitions</h2>
-                <div class="awards-grid">
+                <div class="awards-list">
                     <div class="award-card">
                         <h3>John H. Mitchell Scholarship</h3>
                         <p class="year">2024</p>
@@ -510,7 +507,7 @@
             <section id="resume">
                 <h2>Resume</h2>
                 <p>Download my complete resume to learn more about my experience, skills, and qualifications.</p>
-                <a href="TylerWilsonResume.pdf" class="download-btn" onclick="alert('Resume download would start here. Replace with actual PDF link.'); return false;">📄 Download Resume (PDF)</a>
+                <a href="TylerWilsonResume.pdf" class="download-btn">📄 Download Resume (PDF)</a>
             </section>
         </div>
     </div>
@@ -827,3 +824,17 @@
             
             modal.classList.add('active');
         }
+
+        function closeProject() {
+            document.getElementById('projectModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProject();
+            }
+        });
+    </script>
+</body>
+</html>
