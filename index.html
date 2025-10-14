@@ -166,7 +166,7 @@
             font-style: italic;
         }
 
-        /* Awards Section - Linear Layout */
+        /* Awards Section */
         .awards-list {
             display: flex;
             flex-direction: column;
@@ -197,7 +197,7 @@
             font-size: 0.95rem;
         }
 
-        /* Projects List Page */
+        /* Projects List */
         .projects-list {
             display: flex;
             flex-direction: column;
@@ -268,20 +268,19 @@
             height: 100%;
             background: rgba(0,0,0,0.7);
             overflow-y: auto;
+            padding: 2rem 0;
         }
 
         .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
         }
 
         .modal-content {
             background: #fff;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 10px;
-            max-width: 800px;
-            margin: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
             position: relative;
         }
 
@@ -294,10 +293,127 @@
             color: #7f8c8d;
             background: none;
             border: none;
+            line-height: 1;
+            padding: 0.5rem;
         }
 
         .modal-close:hover {
             color: #2c3e50;
+        }
+
+        /* Project Links Section */
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            background: #2c3e50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        .project-link-btn:hover {
+            background: #34495e;
+        }
+
+        .project-link-btn.github {
+            background: #24292e;
+        }
+
+        .project-link-btn.github:hover {
+            background: #2f363d;
+        }
+
+        .project-link-btn.pdf {
+            background: #e74c3c;
+        }
+
+        .project-link-btn.pdf:hover {
+            background: #c0392b;
+        }
+
+        /* Video Embed */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Contributors Section */
+        .contributors {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .contributors h4 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .contributors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .contributor-tag {
+            background: #3498db;
+            color: #fff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Project Description Sections */
+        .project-section {
+            margin: 1.5rem 0;
+        }
+
+        .project-section h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .project-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-section ul {
+            padding-left: 1.5rem;
+            color: #666;
+        }
+
+        .project-section ul li {
+            margin-bottom: 0.5rem;
         }
 
         /* Resume Download Button */
@@ -385,6 +501,19 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
+            }
+
+            .modal-content {
+                padding: 2rem 1.5rem;
+                margin: 0 1rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-link-btn {
+                justify-content: center;
             }
         }
     </style>
@@ -649,87 +778,6 @@
                             <span class="tech-tag">LSTM</span>
                         </div>
                     </div>
-
-                    <div class="project-list-item" onclick="openProject(2)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Task Management App</h3>
-                                <p class="date">June 2023 - December 2023</p>
-                            </div>
-                        </div>
-                        <p>A collaborative task management tool with real-time updates and team collaboration features.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">WebSockets</span>
-                            <span class="tech-tag">Tailwind CSS</span>
-                        </div>
-                    </div>
-
-                    <div class="project-list-item" onclick="openProject(3)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Portfolio Website Builder</h3>
-                                <p class="date">January 2023 - May 2023</p>
-                            </div>
-                        </div>
-                        <p>A drag-and-drop website builder specifically designed for creative professionals.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">AWS S3</span>
-                        </div>
-                    </div>
-
-                    <div class="project-list-item" onclick="openProject(4)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Analytics Dashboard</h3>
-                                <p class="date">August 2022 - December 2022</p>
-                            </div>
-                        </div>
-                        <p>A data visualization dashboard for tracking business metrics and KPIs in real-time.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">Redis</span>
-                        </div>
-                    </div>
-
-                    <div class="project-list-item" onclick="openProject(5)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Mobile Fitness Tracker</h3>
-                                <p class="date">March 2022 - July 2022</p>
-                            </div>
-                        </div>
-                        <p>A cross-platform mobile app for tracking workouts, nutrition, and fitness goals.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">React Native</span>
-                            <span class="tech-tag">Redux</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                    </div>
-
-                    <div class="project-list-item" onclick="openProject(6)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Social Media Dashboard</h3>
-                                <p class="date">October 2021 - February 2022</p>
-                            </div>
-                        </div>
-                        <p>A unified dashboard for managing multiple social media accounts and scheduling posts.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Angular</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">OAuth</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>
@@ -740,137 +788,137 @@
         <div class="container">
             <section>
                 <h2>Educational Resources</h2>
-                <p style="margin-bottom: 2rem;">During my time at university, I found it helpful to create high quality formula sheets and summary sheets, both for use in open-book examns and for study guides.
+                <p style="margin-bottom: 2rem;">During my time at university, I found it helpful to create high quality formula sheets and summary sheets, both for use in open-book exams and for study guides.
                     I created these sheets using LaTeX and shared them with my peers. 
                     Some of these formula sheets were used by over 1000 students while others were adopted by my professors for use in midterms or final exams.
                 </p>
-                <p style="margin-bottom: 2rem;">Source code for some of the documents can be accessed here: <a href= "https://github.com/TWilson05/Formula_Sheets" target="_blank"> https://github.com/TWilson05/Formula_Sheets</a>
+                <p style="margin-bottom: 2rem;">Source code for some of the documents can be accessed here: <a href="https://github.com/TWilson05/Formula_Sheets" target="_blank">https://github.com/TWilson05/Formula_Sheets</a></p>
                 <div class="resource-list">
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC PHYS 401 Formula Sheet</h3>
                             <p>Final exam formula sheet for electrodynamics (2024 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\Phys_401_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Phys_401_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC ELEC 481 Summary Sheet</h3>
                             <p>Course summary on engineering economics (2024 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\Elec_481_Notes.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Elec_481_Notes.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC APSC 278 Summary Sheet</h3>
                             <p>Course summary on engineering materials (2023 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\APSC_278_Little_Last_Minute_Things.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/APSC_278_Little_Last_Minute_Things.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MECH 325 Bible</h3>
                             <p>Comprehensive how-to guide on solving problems in mechanical design (2022 Fall).</p>
                         </div>
-                        <a href="content\educational_resources\Mech_325_Bible.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Mech_325_Bible.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MECH 325 Summary Sheet</h3>
                             <p>Course summary on the more conceptual topics in mechanical design (2022 Fall).</p>
                         </div>
-                        <a href="content\educational_resources\MECH_325___Little_Last_Minute_Things.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/MECH_325___Little_Last_Minute_Things.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC ELEC 221 Formula Sheet</h3>
                             <p>Final exam formula sheet created for the course professor, used for the 2022 winter semester final exam (2022 Fall).</p>
                         </div>
-                        <a href="content\educational_resources\ELEC_221_Final_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/ELEC_221_Final_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC PHYS 250 Formula Sheet</h3>
                             <p>Final exam formula sheet for introduction to modern physics (2022 Summer).</p>
                         </div>
-                        <a href="content\educational_resources\PHYS_250_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/PHYS_250_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MATH 257 Summary Sheet</h3>
                             <p>Course summary on how the relevant methods and formulas to solve partial differential equations (2022 Summer).</p>
                         </div>
-                        <a href="content\educational_resources\Math_257_Final_Summary_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Math_257_Final_Summary_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MATH 257 Notes</h3>
                             <p>Typeset lecture notes on partial differential equations (2022 Summer).</p>
                         </div>
-                        <a href="content\educational_resources\Math_257_Notes.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Math_257_Notes.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC PHYS 203 Notes</h3>
                             <p>Typeset lecture notes on thermodynamics (2022 Summer).</p>
                         </div>
-                        <a href="content\educational_resources\PHYS_250_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/PHYS_250_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MECH 260 Formula Sheet</h3>
                             <p>Final exam formula sheet for mechanics of materials (2022 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\MECH_260_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/MECH_260_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MATH 217 Formula Sheet</h3>
                             <p>Final exam formula sheet for multivariable and vector calculus (2021 Fall).</p>
                         </div>
-                        <a href="content\educational_resources\Math_217_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Math_217_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MATH 217 Notes</h3>
                             <p>Typeset lecture notes on multivariable and vector calculus (2021 Fall).</p>
                         </div>
-                        <a href="content\educational_resources\Math_217_Notes.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Math_217_Notes.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MATH 152 Formula Sheet</h3>
                             <p>Final exam formula sheet for linear algebra (2021 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\MATH_152_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/MATH_152_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC MATH 152 Notes</h3>
                             <p>Typeset lecture notes on linear algebra (2021 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\Math_152_Notes.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Math_152_Notes.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC PHYS 158 Formula Sheet</h3>
                             <p>Final exam formula sheet for introductory physics for engineering II (2021 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\PHYS_158_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/PHYS_158_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC PHYS 157 & 158 Notes</h3>
                             <p>Handwritten lecture notes on introductory physics for engineering (2021 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\Phys 157&158 Notes -Tyler Wilson.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/Phys 157&158 Notes -Tyler Wilson.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
                         <div class="info">
                             <h3>UBC APSC 101 Summary Sheet</h3>
                             <p>Summary sheet for introduction to engineering II (2021 Spring).</p>
                         </div>
-                        <a href="content\educational_resources\APSC_101_Course_Summary.pdf" class="resource-btn">Download PDF</a>
+                        <a href="content/educational_resources/APSC_101_Course_Summary.pdf" class="resource-btn">Download PDF</a>
                     </div>
                 </div>
             </section>
@@ -886,104 +934,28 @@
     </div>
 
     <script>
-        // Project data
+        // Project data with enhanced fields
         const projects = {
             1: {
                 title: "Streamflow Prediction in BC Using Deep Learning",
                 date: "October 2024 - December 2024",
                 description: "A CNN-LSTM model aimed at predicting streamflow in BC using remote sensing weather data.",
-                fullDescription: "For my final project in my EOSC 410 course, I trained an LSTM-CNN model to forecast predictions of the next day's streamflow value at gauge stations across BC using remote sensing weather data.",
-                technologies: ["TensorFlow", "Python"],
-                features: [
-                    "Insert here"
+                summary: "For my final project in EOSC 410, I developed a deep learning model to forecast daily streamflow values at gauge stations across British Columbia. The model leverages remote sensing weather data and combines convolutional neural networks (CNN) with long short-term memory (LSTM) networks to capture both spatial and temporal patterns in the data.",
+                technologies: ["TensorFlow", "Python", "Pandas", "NumPy", "Matplotlib"],
+                objectives: [
+                    "Develop an accurate model for next-day streamflow prediction",
+                    "Integrate multiple remote sensing data sources",
+                    "Compare performance against traditional hydrological models",
+                    "Create a scalable pipeline for real-time predictions"
                 ],
-                challenges: "Test",
-                outcome: "Test"
-            },
-            2: {
-                title: "Task Management App",
-                date: "June 2023 - December 2023",
-                description: "A collaborative platform for team productivity.",
-                fullDescription: "Developed a real-time task management application that helps teams collaborate more effectively. The app features drag-and-drop functionality, real-time updates, and integration with popular tools.",
-                technologies: ["Vue.js", "Firebase", "WebSockets", "Tailwind CSS"],
-                features: [
-                    "Real-time collaboration with live updates",
-                    "Drag-and-drop task organization",
-                    "Project timelines and Gantt charts",
-                    "File attachments and comments",
-                    "Team member assignments and notifications",
-                    "Integration with Slack and email"
-                ],
-                challenges: "Implementing real-time synchronization across multiple users while preventing conflicts and ensuring data consistency.",
-                outcome: "Adopted by 50+ companies with positive feedback on improved team productivity by an average of 30%."
-            },
-            3: {
-                title: "Portfolio Website Builder",
-                date: "January 2023 - May 2023",
-                description: "An intuitive tool for creating stunning portfolio websites.",
-                fullDescription: "Created a drag-and-drop website builder specifically tailored for creative professionals who want to showcase their work without coding knowledge.",
-                technologies: ["React", "Next.js", "PostgreSQL", "AWS S3"],
-                features: [
-                    "Drag-and-drop interface builder",
-                    "Pre-designed templates for various industries",
-                    "Custom domain support",
-                    "SEO optimization tools",
-                    "Analytics integration",
-                    "Media gallery with automatic optimization"
-                ],
-                challenges: "Balancing ease of use with customization options while ensuring generated sites are fast and SEO-friendly.",
-                outcome: "Over 5,000 portfolios created within six months. Featured in several design blogs and communities."
-            },
-            4: {
-                title: "Analytics Dashboard",
-                date: "August 2022 - December 2022",
-                description: "A powerful tool for visualizing business metrics.",
-                fullDescription: "Built a comprehensive analytics dashboard that aggregates data from multiple sources and presents it through interactive visualizations.",
-                technologies: ["React", "D3.js", "Python", "Flask", "Redis"],
-                features: [
-                    "Real-time data visualization",
-                    "Customizable widget-based layout",
-                    "Data export functionality",
-                    "Automated report generation",
-                    "Multiple data source integration",
-                    "Role-based access control"
-                ],
-                challenges: "Processing and visualizing large datasets in real-time while maintaining smooth interactions and quick load times.",
-                outcome: "Reduced reporting time by 70% for clients. Enabled data-driven decision making across multiple departments."
-            },
-            5: {
-                title: "Mobile Fitness Tracker",
-                date: "March 2022 - July 2022",
-                description: "A comprehensive fitness tracking application.",
-                fullDescription: "Developed a cross-platform mobile application that helps users track their fitness journey, including workouts, nutrition, and progress photos.",
-                technologies: ["React Native", "Redux", "Node.js", "MongoDB"],
-                features: [
-                    "Workout logging and history",
-                    "Nutrition tracking with barcode scanner",
-                    "Progress photos and measurements",
-                    "Custom workout plans",
-                    "Social sharing and challenges",
-                    "Integration with wearable devices"
-                ],
-                challenges: "Creating a seamless experience across iOS and Android while handling offline functionality and data synchronization.",
-                outcome: "Downloaded by 25,000+ users in the first three months with 4.7-star rating on both app stores."
-            },
-            6: {
-                title: "Social Media Dashboard",
-                date: "October 2021 - February 2022",
-                description: "A unified platform for social media management.",
-                fullDescription: "Built a comprehensive dashboard that allows users to manage multiple social media accounts from one place, schedule posts, and track engagement metrics.",
-                technologies: ["Angular", "TypeScript", "OAuth", "PostgreSQL"],
-                features: [
-                    "Multi-account management",
-                    "Post scheduling and queue",
-                    "Analytics and engagement tracking",
-                    "Content calendar view",
-                    "Team collaboration tools",
-                    "Automated reporting"
-                ],
-                challenges: "Integrating with multiple social media APIs while handling rate limits and maintaining real-time updates.",
-                outcome: "Used by 100+ marketing teams and agencies. Reduced social media management time by 60%."
+                methodology: "The project utilized historical streamflow data from BC gauge stations combined with satellite-derived precipitation, temperature, and snow cover data. A hybrid CNN-LSTM architecture was implemented where the CNN layers extract spatial features from gridded weather data, while LSTM layers capture temporal dependencies in the streamflow time series.",
+                results: "The model achieved strong predictive performance with R² values exceeding 0.85 for most stations during validation. It successfully captured seasonal patterns and responded appropriately to extreme weather events. The hybrid architecture outperformed baseline LSTM-only models by 15-20% in prediction accuracy.",
+                challenges: "Key challenges included handling missing data in remote sensing products, dealing with highly variable flow regimes across different watersheds, and balancing model complexity with training time. Data preprocessing and feature engineering were critical to achieving good performance.",
+                contributors: ["Tyler Wilson", "Gage Paskiewich"],
+                githubUrl: "https://github.com/TWilson05/EOSC-410-Final-Project",
+                // reportUrl: "content/projects/streamflow_report.pdf",
+                // videoUrl: "", // YouTube embed URL
+                slidesUrl: "content/projects/EOSC_Final_Project_Presentation_Slides.pdf"
             }
         };
 
@@ -1005,25 +977,110 @@
             const modal = document.getElementById('projectModal');
             const detailsDiv = document.getElementById('projectDetails');
             
-            let featuresHTML = project.features.map(f => `<li>${f}</li>`).join('');
-            let techHTML = project.technologies.map(t => `<span style="display: inline-block; background: #3498db; color: white; padding: 0.3rem 0.8rem; margin: 0.2rem; border-radius: 5px; font-size: 0.9rem;">${t}</span>`).join('');
+            // Build technology tags
+            let techHTML = project.technologies.map(t => 
+                `<span style="display: inline-block; background: #3498db; color: white; padding: 0.3rem 0.8rem; margin: 0.2rem; border-radius: 5px; font-size: 0.9rem;">${t}</span>`
+            ).join('');
+            
+            // Build objectives list
+            let objectivesHTML = project.objectives.map(o => `<li>${o}</li>`).join('');
+            
+            // Build contributors
+            let contributorsHTML = '';
+            if (project.contributors && project.contributors.length > 0) {
+                contributorsHTML = `
+                    <div class="contributors">
+                        <h4>Contributors</h4>
+                        <div class="contributors-list">
+                            ${project.contributors.map(c => `<span class="contributor-tag">${c}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Build project links
+            let linksHTML = '<div class="project-links">';
+            if (project.githubUrl) {
+                linksHTML += `<a href="${project.githubUrl}" target="_blank" class="project-link-btn github">
+                    <span>📁</span> View on GitHub
+                </a>`;
+            }
+            if (project.reportUrl) {
+                linksHTML += `<a href="${project.reportUrl}" target="_blank" class="project-link-btn pdf">
+                    <span>📄</span> View Report (PDF)
+                </a>`;
+            }
+            if (project.slidesUrl) {
+                linksHTML += `<a href="${project.slidesUrl}" target="_blank" class="project-link-btn pdf">
+                    <span>📊</span> View Slides (PDF)
+                </a>`;
+            }
+            linksHTML += '</div>';
+            
+            // Build video embed
+            let videoHTML = '';
+            if (project.videoUrl) {
+                // Extract YouTube video ID
+                let videoId = '';
+                if (project.videoUrl.includes('youtube.com/watch?v=')) {
+                    videoId = project.videoUrl.split('v=')[1].split('&')[0];
+                } else if (project.videoUrl.includes('youtu.be/')) {
+                    videoId = project.videoUrl.split('youtu.be/')[1].split('?')[0];
+                }
+                
+                if (videoId) {
+                    videoHTML = `
+                        <div class="project-section">
+                            <h3>Project Video</h3>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/${videoId}" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
             
             detailsDiv.innerHTML = `
                 <h2 style="color: #2c3e50; margin-bottom: 0.5rem;">${project.title}</h2>
-                <p style="color: #7f8c8d; font-style: italic; margin-bottom: 1rem;">${project.date}</p>
-                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">${project.fullDescription}</p>
+                <p style="color: #7f8c8d; font-style: italic; margin-bottom: 1.5rem;">${project.date}</p>
                 
-                <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Technologies Used</h3>
-                <div style="margin-bottom: 1.5rem;">${techHTML}</div>
+                ${linksHTML}
+                ${contributorsHTML}
                 
-                <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Key Features</h3>
-                <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">${featuresHTML}</ul>
+                <div class="project-section">
+                    <h3>Technologies Used</h3>
+                    <div>${techHTML}</div>
+                </div>
                 
-                <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Challenges</h3>
-                <p style="margin-bottom: 1.5rem;">${project.challenges}</p>
+                <div class="project-section">
+                    <h3>Project Summary</h3>
+                    <p>${project.summary}</p>
+                </div>
                 
-                <h3 style="color: #2c3e50; margin-top: 1.5rem; margin-bottom: 0.5rem;">Outcome</h3>
-                <p style="margin-bottom: 1rem;">${project.outcome}</p>
+                <div class="project-section">
+                    <h3>Objectives</h3>
+                    <ul>${objectivesHTML}</ul>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Methodology</h3>
+                    <p>${project.methodology}</p>
+                </div>
+                
+                ${videoHTML}
+                
+                <div class="project-section">
+                    <h3>Results</h3>
+                    <p>${project.results}</p>
+                </div>
+                
+                <div class="project-section">
+                    <h3>Challenges & Solutions</h3>
+                    <p>${project.challenges}</p>
+                </div>
             `;
             
             modal.classList.add('active');
