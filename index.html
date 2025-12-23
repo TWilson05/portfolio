@@ -868,6 +868,15 @@
                         </div>
                         <p>Frequency domain electromagnetic survey device for unexploded ordinates (UXO) detection.</p>
                     </div>
+                    <div class="project-list-item" onclick="openProject(9)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Herring Spawn Classification via Satellite Imagery</h3>
+                                <p class="date">January 2025 - April 2025</p>
+                            </div>
+                        </div>
+                        <p>Investigating remote sensing methodologies to monitor Pacific Herring spawning events using multi-spectral Sentinel-2 data.</p>
+                    </div>
                     <div class="project-list-item" onclick="openProject(1)">
                         <div class="project-header">
                             <div>
@@ -1294,6 +1303,20 @@
                     "Encrypted and decrypted documents using Discrete Fourier Transform."
                 ],
                 contributors: ["Tyler Wilson", "Ethan Predinchuk", "Chris Griffiths"]
+            },
+            9: {
+                title: "Herring Spawn Classification via Satellite Imagery",
+                date: "January 2025 - April 2025",
+                summary: "Investigating remote sensing methodologies to monitor Pacific Herring spawning events using multi-spectral Sentinel-2 data.",
+                technologies: ["Remote Sensing", "Sentinel-2", "Supervised Learning", "Maximum Likelihood", "GIS"],
+                bullets: [
+                    "Developed a methodology to quantify herring spawn populations by detecting characteristic milky turquoise ocean color changes in satellite data.",
+                    "Compared the performance of supervised classification and time-based anomaly detection using Sentinel-2 high-resolution imagery.",
+                    "Demonstrated that time-based anomaly methods provide more consistent accuracy for identifying milt density compared to traditional single-image approaches.",
+                    "Validated the efficacy of time-based anomalies for monitoring long-term ecosystem health and spawning patterns in the BC coastal region."
+                ],
+                contributors: ["Tyler Wilson", "Sujin Jung", "Carly Dargatz", "Vivian Lin", "Amanda Quail"],
+                reportUrl: "content/projects/GEOS373_Final_Poster.pdf"
             }
         };
 
@@ -1307,7 +1330,7 @@
             
             let linksHTML = '<div class="project-links">';
             if (p.githubUrl) linksHTML += `<a href="${p.githubUrl}" target="_blank" class="project-link-btn github">📁 GitHub</a>`;
-            if (p.reportUrl) linksHTML += `<a href="${p.reportUrl}" target="_blank" class="project-link-btn report">📄 Report PDF</a>`;
+            if (p.reportUrl) linksHTML += `<a href="${p.reportUrl}" target="_blank" class="project-link-btn report">📄 Report/Poster PDF</a>`;
             if (p.slidesUrl) linksHTML += `<a href="${p.slidesUrl}" target="_blank" class="project-link-btn slides">📊 Slides PDF</a>`;
             if (p.videoUrl) linksHTML += `<a href="${p.videoUrl}" target="_blank" class="project-link-btn video">📺 Watch Video</a>`;
             linksHTML += '</div>';
