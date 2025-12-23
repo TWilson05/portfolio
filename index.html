@@ -470,6 +470,47 @@
         .resource-btn:hover {
             background: #c0392b;
         }
+        
+        /* NEW: Courses Section Styling */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background: #fff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-top: 4px solid #3498db;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .course-card .course-code {
+            color: #3498db;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .course-card h3 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .course-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -525,6 +566,7 @@
             <ul>
                 <li><a href="#" data-page="home">Home</a></li>
                 <li><a href="#" data-page="projects">Projects</a></li>
+                <li><a href="#" data-page="courses">Courses</a></li>
                 <li><a href="#" data-page="resources">Educational Resources</a></li>
             </ul>
         </div>
@@ -780,12 +822,6 @@
                             </div>
                         </div>
                         <p>For my final project in my EOSC 410 course, I trained an LSTM-CNN model to forecast predictions of the next day's streamflow value at gauge stations across BC using remote sensing weather data.</p>
-                        <!-- <div class="tech-tags">
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">CNN</span>
-                            <span class="tech-tag">LSTM</span>
-                        </div> -->
                     </div>
                     <div class="project-list-item" onclick="openProject(3)">
                         <div class="project-header">
@@ -804,6 +840,51 @@
                             </div>
                         </div>
                         <p>Developed a self-driving car to navigate a parking lot setting in a ROS Gazebo environment, reading license plates on parked cars and avoiding pedestrians and other vehicles, placing 3rd in competition.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- NEW: Courses Page -->
+    <div id="courses" class="page">
+        <div class="container">
+            <section>
+                <h2>Key Courses</h2>
+                <p style="margin-bottom: 2rem; color: #666;">A selection of relevant coursework completing during my Engineering Physics degree and ongoing MSc in Geophysics.</p>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <span class="course-code">EOSC 453</span>
+                    </div>
+                    <div class="course-card">
+                        <span class="course-code">EOSC 410</span>
+                        <h3>Geophysical Data Analysis</h3>
+                        <p>Advanced data analysis techniques for earth sciences, including time-series analysis, inverse theory, and machine learning applications in Python.</p>
+                    </div>
+                    <div class="course-card">
+                        <span class="course-code">ENPH 459</span>
+                        <h3>Engineering Physics Capstone</h3>
+                        <p>A rigorous two-term project course involving the design, prototyping, and testing of a complex electro-mechanical system for an external client.</p>
+                    </div>
+                    <div class="course-card">
+                        <span class="course-code">PHYS 401</span>
+                        <h3>Electromagnetic Theory</h3>
+                        <p>Comprehensive study of static and dynamic electromagnetic fields, Maxwell's equations, and electromagnetic wave propagation.</p>
+                    </div>
+                    <div class="course-card">
+                        <span class="course-code">MECH 325</span>
+                        <h3>Machine Design</h3>
+                        <p>Fundamentals of mechanical design including stress analysis, fatigue failure theories, and the design of mechanical components like gears and shafts.</p>
+                    </div>
+                    <div class="course-card">
+                        <span class="course-code">MATH 257</span>
+                        <h3>Partial Differential Equations</h3>
+                        <p>Analytical and numerical methods for solving partial differential equations, with applications to heat transfer, wave propagation, and diffusion.</p>
+                    </div>
+                    <div class="course-card">
+                        <span class="course-code">ENPH 353</span>
+                        <h3>Engineering Physics Project Laboratory</h3>
+                        <p>Focuses on autonomous robot design, including real-time control systems, computer vision, and ROS integration.</p>
                     </div>
                 </div>
             </section>
@@ -961,7 +1042,7 @@
     </div>
 
     <script>
-        // Project data with enhanced fields
+        // Project data with enhanced fields and defensive properties
         const projects = {
             1: {
                 title: "Streamflow Prediction in BC Using Deep Learning",
@@ -988,15 +1069,16 @@
                 title: "Geophysical Electromagnetic Scanner",
                 date: "September 2024 - April 2025",
                 description: "An electromagnetic device capable of collecting data in underground regions and then reconstructing an image of this underground region to classify objects as potential UXOs.",
-                summary: "",
-                technologies: ["Python", "NumPy", "MATLAB"],
+                summary: "Developed an electromagnetic induction scanner to image underground anomalies. The system uses a transmitter coil to induce eddy currents in subsurface targets and receiver coils to measure the secondary magnetic fields.",
+                technologies: ["Python", "NumPy", "MATLAB", "Electronics"],
                 objectives: [
-                    "A",
-                    "B"
+                    "Detect metallic objects underground",
+                    "Reconstruct 2D/3D images of subsurface targets",
+                    "Classify potential UXOs"
                 ],
-                methodology: "",
-                results: "",
-                challenges: "",
+                methodology: "We designed a multi-coil sensor array and implemented inversion algorithms to reconstruct subsurface conductivity distributions from the measured magnetic field data.",
+                results: "The prototype successfully detected large metallic objects at shallow depths in controlled test environments.",
+                challenges: "Signal-to-noise ratio in urban environments and the computational complexity of the inversion algorithm were significant hurdles.",
                 contributors: ["Tyler Wilson", "Sabrina Ashik", "Joel Tsuchitori", "Matthew Hasman"],
                 githubUrl: "https://github.com/matthewhasman/Geophysical-Electromagnetic-Scanner",
                 reportUrl: "content/project/2459_GEMS_Final_Report.pdf",
@@ -1006,7 +1088,16 @@
                 title: "Continuum Tube Robot",
                 date: "September 2023 - April 2024",
                 description: "Developed a novel, compact mechanical design for a soft continuum tube robot.",
-                technologies: ["Python", "SciKitLearn", "NumPy"],
+                summary: "Designed and built a tendon-driven continuum robot capable of navigating complex, confined spaces. The robot features a modular backbone design that allows for high flexibility and dexterity.",
+                technologies: ["Python", "SciKitLearn", "NumPy", "SolidWorks"],
+                objectives: [
+                    "Design a compact actuation mechanism",
+                    "Implement precise tendon control",
+                    "Demonstrate navigation in curved paths"
+                ],
+                methodology: "Used rapid prototyping (3D printing) to iterate on the backbone design. Implemented a kinematic model in Python to control the cable lengths for desired end-effector poses.",
+                results: "The robot demonstrated smooth motion and the ability to conform to various curved shapes, validating the mechanical design.",
+                challenges: "Friction in the tendon routing and hysteresis in the soft material backbone required complex compensation in the control software.",
                 contributors: ["Tyler Wilson", "Cindy Zhong", "Joseph Koh", "Mark Long"],
                 githubUrl: "https://github.com/cindyzhxng/2406-continuum-robot",
                 reportUrl: "content/project/2406_Continuum_Robot_Final_Report.pdf",
@@ -1014,9 +1105,18 @@
             },
             4: {
                 title: "Simulated License Plate Detecting Robot",
-                date: "September 2022 -December 20222",
+                date: "September 2022 - December 2022",
                 description: "Developed a self-driving car to navigate a parking lot setting in a ROS Gazebo environment, reading license plates on parked cars and avoiding pedestrians and other vehicles, placing 3rd in competition.",
+                summary: "In a simulated environment (Gazebo), we programmed a robot to autonomously navigate a road network, obey traffic rules, and identify license plates on parked vehicles using computer vision.",
                 technologies: ["ROS", "TensorFlow", "Python", "CNN", "OpenCV", "PID"],
+                objectives: [
+                    "Autonomous navigation using PID control",
+                    "Real-time image processing for line tracking",
+                    "CNN-based license plate character recognition"
+                ],
+                methodology: "We used OpenCV for lane detection and a PID controller for steering. A Convolutional Neural Network (CNN) was trained on a generated dataset to read characters from license plate images captured by the robot's camera.",
+                results: "The robot successfully navigated the track and correctly identified license plates, securing 3rd place in the class competition.",
+                challenges: "Balancing speed with stability in the PID controller and ensuring the CNN was robust to different lighting conditions and viewing angles.",
                 contributors: ["Tyler Wilson", "Peter Goubarev"],
                 githubUrl: "https://github.com/Enph353-Team-20/controller_pkg",
                 reportUrl: "content/projects/ENPH_353_Final_Report.pdf",
@@ -1029,10 +1129,15 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const pageName = this.getAttribute('data-page');
+                
+                // Switch pages
                 document.querySelectorAll('.page').forEach(page => {
                     page.classList.remove('active');
                 });
                 document.getElementById(pageName).classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
             });
         });
 
@@ -1042,22 +1147,31 @@
             const modal = document.getElementById('projectModal');
             const detailsDiv = document.getElementById('projectDetails');
             
+            // Defensive coding: helper to handle missing arrays/strings safely
+            const techs = project.technologies || [];
+            const objs = project.objectives || [];
+            const contributors = project.contributors || [];
+            const summary = project.summary || project.description || "Project details coming soon.";
+            const methodology = project.methodology || "Information unavailable.";
+            const results = project.results || "Information unavailable.";
+            const challenges = project.challenges || "Information unavailable.";
+
             // Build technology tags
-            let techHTML = project.technologies.map(t => 
-                `<span style="display: inline-block; background: #3498db; color: white; padding: 0.3rem 0.8rem; margin: 0.2rem; border-radius: 5px; font-size: 0.9rem;">${t}</span>`
+            let techHTML = techs.map(t => 
+                `<span class="tech-tag">${t}</span>`
             ).join('');
             
             // Build objectives list
-            let objectivesHTML = project.objectives.map(o => `<li>${o}</li>`).join('');
+            let objectivesHTML = objs.map(o => `<li>${o}</li>`).join('');
             
             // Build contributors
             let contributorsHTML = '';
-            if (project.contributors && project.contributors.length > 0) {
+            if (contributors.length > 0) {
                 contributorsHTML = `
                     <div class="contributors">
                         <h4>Contributors</h4>
                         <div class="contributors-list">
-                            ${project.contributors.map(c => `<span class="contributor-tag">${c}</span>`).join('')}
+                            ${contributors.map(c => `<span class="contributor-tag">${c}</span>`).join('')}
                         </div>
                     </div>
                 `;
@@ -1085,7 +1199,6 @@
             // Build video embed
             let videoHTML = '';
             if (project.videoUrl) {
-                // Extract YouTube video ID
                 let videoId = '';
                 if (project.videoUrl.includes('youtube.com/watch?v=')) {
                     videoId = project.videoUrl.split('v=')[1].split('&')[0];
@@ -1117,12 +1230,12 @@
                 
                 <div class="project-section">
                     <h3>Technologies Used</h3>
-                    <div>${techHTML}</div>
+                    <div class="tech-tags">${techHTML}</div>
                 </div>
                 
                 <div class="project-section">
                     <h3>Project Summary</h3>
-                    <p>${project.summary}</p>
+                    <p>${summary}</p>
                 </div>
                 
                 <div class="project-section">
@@ -1132,19 +1245,19 @@
                 
                 <div class="project-section">
                     <h3>Methodology</h3>
-                    <p>${project.methodology}</p>
+                    <p>${methodology}</p>
                 </div>
                 
                 ${videoHTML}
                 
                 <div class="project-section">
                     <h3>Results</h3>
-                    <p>${project.results}</p>
+                    <p>${results}</p>
                 </div>
                 
                 <div class="project-section">
                     <h3>Challenges & Solutions</h3>
-                    <p>${project.challenges}</p>
+                    <p>${challenges}</p>
                 </div>
             `;
             
