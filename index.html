@@ -384,6 +384,11 @@
             background: #34495e;
         }
 
+        .project-link-btn.github { background: #24292e; }
+        .project-link-btn.report { background: #e74c3c; }
+        .project-link-btn.slides { background: #3498db; }
+        .project-link-btn.video { background: #c0392b; }
+
         /* Video Embed */
         .video-container {
             position: relative;
@@ -451,6 +456,10 @@
         .project-section ul {
             padding-left: 1.5rem;
             color: #666;
+        }
+
+        .project-section ul li {
+            margin-bottom: 0.5rem;
         }
 
         /* Download Btn */
@@ -711,7 +720,7 @@
                         Wilson, T & Lapenna, J. (2022). <strong>Student Experience in Self-Learning Mechanics Through OER Development.</strong> 
                         Presented at the American Society for Engineering Education (ASEE) Zone IV Conference, Vancouver, Canada.
                     </p>
-                    <a href="content/publications/ASEE Zone IV Poster 2022.pdf" target="_blank" class="poster-btn">
+                    <a href="content/presentations/ASEE_2022_Poster.pdf" target="_blank" class="poster-btn">
                         <span>📄</span> View Poster PDF
                     </a>
                 </div>
@@ -733,7 +742,6 @@
                 </div>
             </section>
 
-            <!-- Interactive Compact Awards Section -->
             <section id="awards">
                 <h2>Awards & Recognitions</h2>
                 <div class="awards-compact-list">
@@ -845,16 +853,16 @@
         <div class="container">
             <section>
                 <h2>My Projects</h2>
-                <p style="margin-bottom: 2rem; color: #666;">A comprehensive list of projects I've worked on, sorted by date. Click on any project to view detailed information.</p>
+                <p style="margin-bottom: 2rem; color: #666;">A comprehensive list of engineering and software projects. Click on any project to view details, collaborators, reports, and slides.</p>
                 <div class="projects-list">
                     <div class="project-list-item" onclick="openProject(2)">
                         <div class="project-header">
                             <div>
-                                <h3>Geophysical Electromagnetic Scanner</h3>
+                                <h3>Geophysical Electromagnetic Detector</h3>
                                 <p class="date">September 2024 - April 2025</p>
                             </div>
                         </div>
-                        <p>For my 2nd university capstone, my team and I developed an electromagnetic device capable of collecting data in underground regions and then reconstructing an image of this underground region to classify objects as potential UXOs</p>
+                        <p>Frequency domain electromagnetic survey device for unexploded ordinates (UXO) detection.</p>
                     </div>
                     <div class="project-list-item" onclick="openProject(1)">
                         <div class="project-header">
@@ -863,7 +871,7 @@
                                 <p class="date">October 2024 - December 2024</p>
                             </div>
                         </div>
-                        <p>For my final project in my EOSC 410 course, I trained an LSTM-CNN model to forecast predictions of the next day's streamflow value at gauge stations across BC using remote sensing weather data.</p>
+                        <p>LSTM-CNN model trained to forecast daily streamflow values using remote sensing weather data.</p>
                     </div>
                     <div class="project-list-item" onclick="openProject(3)">
                         <div class="project-header">
@@ -872,7 +880,7 @@
                                 <p class="date">September 2023 - April 2024</p>
                             </div>
                         </div>
-                        <p>Developed a novel, compact mechanical design for a soft continuum tube robot.</p>
+                        <p>Soft continuum robot with 1% tip resolution and ML-based kinematics mapping.</p>
                     </div>
                     <div class="project-list-item" onclick="openProject(4)">
                         <div class="project-header">
@@ -881,7 +889,43 @@
                                 <p class="date">September 2022 - December 2022</p>
                             </div>
                         </div>
-                        <p>Developed a self-driving car to navigate a parking lot setting in a ROS Gazebo environment, reading license plates on parked cars and avoiding pedestrians and other vehicles, placing 3rd in competition.</p>
+                        <p>Self-driving car utilizing SIFT, CNNs, and PID control for parking lot navigation and OCR.</p>
+                    </div>
+                    <div class="project-list-item" onclick="openProject(5)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Autonomous Treasure-Finding Robot</h3>
+                                <p class="date">May 2022 - August 2022</p>
+                            </div>
+                        </div>
+                        <p>Fully-autonomous collection robot featuring a custom chassis and ARM-based control system.</p>
+                    </div>
+                    <div class="project-list-item" onclick="openProject(6)">
+                        <div class="project-header">
+                            <div>
+                                <h3>WikiMediator Server</h3>
+                                <p class="date">November 2021 - December 2021</p>
+                            </div>
+                        </div>
+                        <p>Multithreaded server for Wikipedia graph traversal and shortest path computation.</p>
+                    </div>
+                    <div class="project-list-item" onclick="openProject(7)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Email Interaction Analyzer</h3>
+                                <p class="date">November 2021</p>
+                            </div>
+                        </div>
+                        <p>Graph theory based analysis tool for massive email interaction databases.</p>
+                    </div>
+                    <div class="project-list-item" onclick="openProject(8)">
+                        <div class="project-header">
+                            <div>
+                                <h3>Text Document Analyzer</h3>
+                                <p class="date">October 2021</p>
+                            </div>
+                        </div>
+                        <p>Document similarity and sentiment analysis tool utilizing Google AI and DFT-based encryption.</p>
                     </div>
                 </div>
             </section>
@@ -893,42 +937,38 @@
         <div class="container">
             <section>
                 <h2>Course History</h2>
-                <p style="margin-bottom: 2rem; color: #666;">A comprehensive overview of coursework completed throughout my Engineering Physics degree and ongoing MSc in Geophysics.</p>
-                <!-- Course content kept identical to previous version -->
                 <h3 class="course-year-header">2020/21 - Year 1</h3>
                 <div class="course-grid">
                     <div class="course-card"><span class="course-code">APSC 100</span><h3>Introduction to Engineering I</h3><p>Fundamentals of engineering practice, ethics, and professional project management.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 157</span><h3>Physics for Engineers I</h3><p>Core principles of oscillations, waves, and thermodynamics for engineering applications.</p></div>
-                    <div class="course-card"><span class="course-code">WRDS 150B</span><h3>Writing & Research</h3><p>Development of academic writing and critical research skills.</p></div>
-                    <div class="course-card"><span class="course-code">CHEM 154</span><h3>Chemistry for Engineering</h3><p>Principles of chemistry focused on materials.</p></div>
-                    <div class="course-card"><span class="course-code">APSC 160</span><h3>Computation in Design</h3><p>Programming fundamentals using C.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 100</span><h3>Differential Calculus</h3><p>Calculus applied to physical sciences.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 101</span><h3>Integral Calculus</h3><p>Integration and series for science students.</p></div>
+                    <div class="course-card"><span class="course-code">PHYS 157</span><h3>Physics for Engineers I</h3><p>Core principles of oscillations, waves, and thermodynamics.</p></div>
+                    <div class="course-card"><span class="course-code">WRDS 150B</span><h3>Writing & Research</h3><p>Academic writing and critical research skills development.</p></div>
+                    <div class="course-card"><span class="course-code">CHEM 154</span><h3>Chemistry for Engineering</h3><p>Principles of chemistry focused on engineering materials.</p></div>
+                    <div class="course-card"><span class="course-code">APSC 160</span><h3>Computation in Design</h3><p>Programming fundamentals using the C language.</p></div>
+                    <div class="course-card"><span class="course-code">MATH 100</span><h3>Differential Calculus</h3><p>Calculus applied to physical sciences and engineering.</p></div>
+                    <div class="course-card"><span class="course-code">MATH 101</span><h3>Integral Calculus</h3><p>Integral calculus and series for science students.</p></div>
                     <div class="course-card"><span class="course-code">APSC 101</span><h3>Introduction to Engineering II</h3><p>Engineering design cycle and communication.</p></div>
                     <div class="course-card"><span class="course-code">PHYS 158</span><h3>Physics for Engineers II</h3><p>Concepts in electricity and magnetism.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 159</span><h3>Physics Lab for Engineers</h3><p>Experimental measurement and data analysis.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 170</span><h3>Mechanics I</h3><p>Analysis of statics and dynamics.</p></div>
-                    <div class="course-card"><span class="course-code">HIST 106</span><h3>Global Environmental History</h3><p>Human-environment relationships globally.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 152</span><h3>Linear Systems</h3><p>Matrix algebra and solving linear systems.</p></div>
+                    <div class="course-card"><span class="course-code">PHYS 159</span><h3>Physics Lab for Engineers</h3><p>Experimental measurement and data analysis techniques.</p></div>
+                    <div class="course-card"><span class="course-code">PHYS 170</span><h3>Mechanics I</h3><p>Statics and dynamics for particles and rigid bodies.</p></div>
+                    <div class="course-card"><span class="course-code">HIST 106</span><h3>Global Environmental History</h3><p>History of human-environment relationships.</p></div>
+                    <div class="course-card"><span class="course-code">MATH 152</span><h3>Linear Systems</h3><p>Matrix algebra and solving linear equations.</p></div>
                 </div>
-
                 <h3 class="course-year-header">2021/22 - Year 2</h3>
                 <div class="course-grid">
                     <div class="course-card"><span class="course-code">MATH 217</span><h3>Multivariable Calculus</h3><p>Calculus of several variables and vector fields.</p></div>
                     <div class="course-card"><span class="course-code">MATH 255</span><h3>Ordinary Differential Equations</h3><p>Techniques for first and second-order ODEs.</p></div>
-                    <div class="course-card"><span class="course-code">CPEN 221</span><h3>Software Construction I</h3><p>Large-scale software construction using Java.</p></div>
-                    <div class="course-card"><span class="course-code">CIVL 250</span><h3>Sustainable Development</h3><p>Role of engineers in sustainability.</p></div>
-                    <div class="course-card"><span class="course-code">ELEC 204</span><h3>Linear Circuits</h3><p>DC and AC circuit analysis.</p></div>
-                    <div class="course-card"><span class="course-code">ENPH 259</span><h3>Experimental Techniques</h3><p>Error analysis and hardware-software interfacing.</p></div>
-                    <div class="course-card"><span class="course-code">MECH 260</span><h3>Mechanics of Materials</h3><p>Study of deformable bodies and stress-strain.</p></div>
-                    <div class="course-card"><span class="course-code">PHIL 120</span><h3>Critical Thinking</h3><p>Logical reasoning and argument analysis.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 250</span><h3>Introduction to Modern Physics</h3><p>Special relativity and introductory quantum.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 203</span><h3>Thermal Physics I</h3><p>Thermodynamics of macroscopic systems.</p></div>
+                    <div class="course-card"><span class="course-code">CPEN 221</span><h3>Software Construction I</h3><p>Large-scale software development using Java.</p></div>
+                    <div class="course-card"><span class="course-code">CIVL 250</span><h3>Sustainable Development</h3><p>Role of engineers in achieving sustainability.</p></div>
+                    <div class="course-card"><span class="course-code">ELEC 204</span><h3>Linear Circuits</h3><p>Analysis of linear DC and AC circuits.</p></div>
+                    <div class="course-card"><span class="course-code">ENPH 259</span><h3>Experimental Techniques</h3><p>Measurement and hardware-software interfacing.</p></div>
+                    <div class="course-card"><span class="course-code">MECH 260</span><h3>Mechanics of Materials</h3><p>Deformable bodies and stress-strain analysis.</p></div>
+                    <div class="course-card"><span class="course-code">PHIL 120</span><h3>Critical Thinking</h3><p>Argument analysis and reasoning methodology.</p></div>
+                    <div class="course-card"><span class="course-code">PHYS 250</span><h3>Modern Physics</h3><p>Relativity and introductory quantum mechanics.</p></div>
+                    <div class="course-card"><span class="course-code">PHYS 203</span><h3>Thermal Physics I</h3><p>Statistical mechanics and thermodynamics.</p></div>
                     <div class="course-card"><span class="course-code">MATH 257</span><h3>Partial Differential Equations</h3><p>Fourier series and boundary value problems.</p></div>
-                    <div class="course-card"><span class="course-code">ENPH 270</span><h3>Mechanics II</h3><p>Advanced rigid body dynamics.</p></div>
-                    <div class="course-card"><span class="course-code">ENPH 253</span><h3>Instrument Design</h3><p>Project lab focusing on autonomous robotics.</p></div>
+                    <div class="course-card"><span class="course-code">ENPH 270</span><h3>Mechanics II</h3><p>Advanced rigid body dynamics and kinematics.</p></div>
+                    <div class="course-card"><span class="course-code">ENPH 253</span><h3>Instrument Design</h3><p>Project lab on autonomous robotics and electronics.</p></div>
                 </div>
-                <!-- ... additional courses shortened for brevity in this snippet ... -->
             </section>
         </div>
     </div>
@@ -942,18 +982,17 @@
                     I created these sheets using LaTeX and shared them with my peers. 
                     Some of these formula sheets were used by over 1000 students while others were adopted by my professors for use in midterms or final exams.
                 </p>
-                <p style="margin-bottom: 2rem;">Source code for some of the documents can be accessed here: <a href="https://github.com/TWilson05/Formula_Sheets" target="_blank">https://github.com/TWilson05/Formula_Sheets</a></p>
                 <div class="resource-list">
                     <div class="resource-item">
-                        <div class="info"><h3>UBC PHYS 401 Formula Sheet</h3><p>Final exam formula sheet for electrodynamics (2024 Spring).</p></div>
+                        <div class="info"><h3>UBC PHYS 401 Formula Sheet</h3><p>Electrodynamics (2024 Spring).</p></div>
                         <a href="content/educational_resources/Phys_401_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
-                        <div class="info"><h3>UBC ELEC 481 Summary Sheet</h3><p>Course summary on engineering economics (2024 Spring).</p></div>
+                        <div class="info"><h3>UBC ELEC 481 Summary Sheet</h3><p>Engineering economics (2024 Spring).</p></div>
                         <a href="content/educational_resources/Elec_481_Notes.pdf" class="resource-btn">Download PDF</a>
                     </div>
                     <div class="resource-item">
-                        <div class="info"><h3>UBC APSC 278 Summary Sheet</h3><p>Course summary on engineering materials (2023 Spring).</p></div>
+                        <div class="info"><h3>UBC APSC 278 Summary Sheet</h3><p>Engineering materials (2023 Spring).</p></div>
                         <a href="content/educational_resources/APSC_278_Little_Last_Minute_Things.pdf" class="resource-btn">Download PDF</a>
                     </div>
                 </div>
@@ -961,7 +1000,7 @@
         </div>
     </div>
 
-    <!-- Project Detail Modal -->
+    <!-- Modal Layout -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeProject()">&times;</button>
@@ -974,91 +1013,162 @@
             1: {
                 title: "Streamflow Prediction in BC Using Deep Learning",
                 date: "October 2024 - December 2024",
-                description: "A CNN-LSTM model aimed at predicting streamflow in BC using remote sensing weather data.",
-                summary: "For my final project in EOSC 410, I developed a deep learning model to forecast daily streamflow values at gauge stations across British Columbia. The model leverages remote sensing weather data and combines convolutional neural networks (CNN) with long short-term memory (LSTM) networks to capture both spatial and temporal patterns in the data.",
+                summary: "Developed a deep learning model to forecast daily streamflow values at gauge stations across British Columbia using remote sensing weather data.",
                 technologies: ["TensorFlow", "Python", "Pandas", "NumPy", "Matplotlib"],
-                objectives: ["Develop an accurate model", "Integrate remote sensing sources", "Compare performance", "Create scalable pipeline"],
-                methodology: "Hybrid CNN-LSTM architecture where CNN layers extract spatial features and LSTM layers capture temporal dependencies.",
-                results: "Achieved R² values exceeding 0.85 for most stations.",
-                challenges: "Handling missing data in remote sensing products and variable flow regimes.",
+                bullets: [
+                    "Trained an LSTM-CNN model to forecast predictions of the next day's streamflow value at gauge stations across BC using remote sensing weather data."
+                ],
                 contributors: ["Tyler Wilson", "Gage Paskiewich"],
                 githubUrl: "https://github.com/TWilson05/EOSC-410-Final-Project",
                 slidesUrl: "content/projects/EOSC_Final_Project_Presentation_Slides.pdf"
             },
             2: {
-                title: "Geophysical Electromagnetic Scanner",
+                title: "Geophysical Electromagnetic Detector",
                 date: "September 2024 - April 2025",
-                description: "An electromagnetic device capable of collecting data in underground regions and classifying objects as potential UXOs.",
-                summary: "Developed an electromagnetic induction scanner to image underground anomalies using transmitter and receiver coils.",
-                technologies: ["Python", "NumPy", "MATLAB", "Electronics"],
-                objectives: ["Detect metallic objects", "Reconstruct 3D images", "Classify UXOs"],
-                methodology: "Multi-coil sensor array and inversion algorithms for subsurface conductivity mapping.",
-                results: "Detected large metallic objects at shallow depths successfully.",
-                challenges: "Signal-to-noise ratio in urban environments and computational complexity.",
+                summary: "Frequency domain electromagnetic method survey device for unexploded ordinates (UXO) detection.",
+                technologies: ["Python", "NumPy", "MATLAB", "Geophysics", "Signal Processing"],
+                bullets: [
+                    "Created a frequency domain electromagnetic method survey device for unexploded ordinates (UXO) detection.",
+                    "Developed and tested a three-coil architecture to isolate induced secondary magnetic fields using physical cancellation.",
+                    "Implemented geophysical inversion algorithms to reconstruct subsurface conductivity profiles in real-time.",
+                    "Built a forward simulation pipeline to model eddy current responses from uniaxial targets; approximated UXOs as spheroids.",
+                    "Explored the use of diffusion models and Bayesian priors to classify UXOs based on their reconstructed conductivity profiles."
+                ],
                 contributors: ["Tyler Wilson", "Sabrina Ashik", "Joel Tsuchitori", "Matthew Hasman"],
                 githubUrl: "https://github.com/matthewhasman/Geophysical-Electromagnetic-Scanner",
-                reportUrl: "content/project/2459_GEMS_Final_Report.pdf"
+                reportUrl: "content/projects/2459_GEMS_Final_Report.pdf",
+                slidesUrl: "content/projects/2459_Underground_Imager_Presentation.pdf"
             },
             3: {
                 title: "Continuum Tube Robot",
                 date: "September 2023 - April 2024",
-                description: "Developed a novel, compact mechanical design for a soft continuum tube robot.",
-                summary: "Designed and built a tendon-driven continuum robot capable of navigating complex, confined spaces.",
-                technologies: ["Python", "SciKitLearn", "SolidWorks"],
-                objectives: ["Design compact actuation", "Implement tendon control", "Demonstrate navigation"],
-                methodology: "Iterative design using rapid prototyping and kinematic modeling in Python.",
-                results: "Robot demonstrated smooth motion in curved paths.",
-                challenges: "Tendon routing friction and material hysteresis compensation.",
+                summary: "Soft continuum tube robot with ML-based control and optimized workspace exploration.",
+                technologies: ["Python", "ML Kinematics", "SolidWorks", "Mechanical Design"],
+                bullets: [
+                    "Developed a novel, compact mechanical design for a soft continuum tube robot with 1% tip resolution.",
+                    "Implemented a kinematic model for the robot using ML to predict its position in space and map position to motor inputs.",
+                    "Created an ML algorithm to select physical tube dimensions to optimize exploration of a simulated workspace."
+                ],
                 contributors: ["Tyler Wilson", "Cindy Zhong", "Joseph Koh", "Mark Long"],
-                githubUrl: "https://github.com/cindyzhxng/2406-continuum-robot"
+                githubUrl: "https://github.com/cindyzhxng/2406-continuum-robot",
+                reportUrl: "content/projects/2406_Continuum_Robot_Final_Report.pdf",
+                slidesUrl: "content/projects/2406_Continuum_Robot_Presentation.pdf"
             },
             4: {
                 title: "Simulated License Plate Detecting Robot",
                 date: "September 2022 - December 2022",
-                description: "Developed a self-driving car reading license plates in a ROS Gazebo environment.",
-                summary: "Autonomous navigation in Gazebo using Computer Vision to identify license plates on vehicles.",
-                technologies: ["ROS", "TensorFlow", "Python", "OpenCV"],
-                objectives: ["Autonomous navigation", "Line tracking", "CNN-based OCR"],
-                methodology: "Used OpenCV for lane detection and CNN for character recognition.",
-                results: "Secured 3rd place in competition.",
-                challenges: "Balancing speed with PID stability and CNN robustness to lighting.",
+                summary: "Self-driving car for autonomous navigation and character identification in a ROS Gazebo environment.",
+                technologies: ["ROS", "TensorFlow", "OpenCV", "PID", "SIFT", "Reinforcement Learning"],
+                bullets: [
+                    "Developed a self-driving car to navigate a parking lot setting in a ROS Gazebo environment, reading license plates on parked cars and avoiding pedestrians and other vehicles, placing 3rd in competition.",
+                    "Trained a CNN using TensorFlow to identify license plate characters with over 95% accuracy.",
+                    "Utilized SIFT and the OpenCV library to identify and extract license plates from the simulation video feed.",
+                    "Used OpenCV tools to program a state machine PID algorithm used to navigate the environment and avoid obstacles.",
+                    "Developed a reinforcement learning algorithm to train a robot to line follow in a ROS Gazebo environment."
+                ],
                 contributors: ["Tyler Wilson", "Peter Goubarev"],
                 githubUrl: "https://github.com/Enph353-Team-20/controller_pkg",
+                reportUrl: "content/projects/ENPH_353_Final_Report.pdf",
                 videoUrl: "https://youtu.be/k3zzYlgzKM8"
+            },
+            5: {
+                title: "Autonomous Treasure-Finding Robot",
+                date: "May 2022 - August 2022",
+                summary: "Fully-autonomous treasure collection robot utilizing sensor fusion and high-precision control.",
+                technologies: ["C++", "ARM", "Circuit Design", "CAD", "Optocouplers"],
+                bullets: [
+                    "Created a fully-autonomous robot to collect treasures, navigating a course using reflectance sensors, IR, and encoders.",
+                    "Designed and built chassis and mechanical arms using CAD and laser-cut parts, integrating motors and sensors for control.",
+                    "Programmed an ARM based chip in C++ to control mechanical arms using servo-motors and ultrasonic sensors.",
+                    "Designed optocoupler circuit to eliminate crosstalk between motors and control chip."
+                ],
+                contributors: ["Tyler Wilson", "Spencer Bradbury", "Ethan Predinchuk", "Liza Belskiy"],
+                githubUrl: "https://github.com/spencerbradbury/enph253",
+                videoUrl: "https://youtu.be/6RmUjTOywKo"
+            },
+            6: {
+                title: "WikiMediator Server",
+                date: "November 2021 - December 2021",
+                summary: "Multithreaded program for Wikipedia API integration and graph algorithms.",
+                technologies: ["Java", "Wikipedia API", "Multithreading", "Algorithms"],
+                bullets: [
+                    "Designed multithreaded program using Wikipedia API to create an interactive server for performing operations on wiki pages.",
+                    "Created algorithm to find shortest path between Wikipedia pages."
+                ],
+                contributors: ["Tyler Wilson", "Ethan Predinchuk", "Chris Griffiths"]
+            },
+            7: {
+                title: "Email Interaction Analyzer",
+                date: "November 2021",
+                summary: "Graph theory based program for analyzing database metrics from massive interaction logs.",
+                technologies: ["Java", "Graph Theory", "JUnit", "Multithreading"],
+                bullets: [
+                    "Developed a program in Java to analyze and return metrics from a database of email interactions using graph theory.",
+                    "Constructed test cases for each method using JUnit, achieving 96% line coverage with a focus on testing edge cases.",
+                    "Developed an algorithm to determine the most connected user in a given time window, time-optimized using multithreading."
+                ],
+                contributors: ["Tyler Wilson", "Ethan Predinchuk", "Chris Griffiths"]
+            },
+            8: {
+                title: "Text Document Analyzer",
+                date: "October 2021",
+                summary: "NLP tool for document metric extraction and similarity grouping.",
+                technologies: ["Java", "Google AI", "DFT", "Signal Processing"],
+                bullets: [
+                    "Designed a program for reading documents from a file or URL and returning sentence and word-level metrics.",
+                    "Used Google’s Natural Language AI for document-level sentiment analysis.",
+                    "Grouped documents by similarity using Jensen-Shannon Divergence.",
+                    "Encrypted and decrypted documents using Discrete Fourier Transform."
+                ],
+                contributors: ["Tyler Wilson", "Ethan Predinchuk", "Chris Griffiths"]
             }
         };
 
-        // Modal Logic
         function openProject(id) {
-            const project = projects[id];
+            const p = projects[id];
             const modal = document.getElementById('projectModal');
             const detailsDiv = document.getElementById('projectDetails');
             
-            const techs = project.technologies || [];
-            const objs = project.objectives || [];
-            const summary = project.summary || project.description;
-
-            let techHTML = techs.map(t => `<span class="tech-tag" style="background:#3498db; color:#fff; padding:0.3rem 0.6rem; border-radius:3px; font-size:0.8rem; margin-right:5px; display:inline-block; margin-bottom:5px;">${t}</span>`).join('');
-            let objectivesHTML = objs.map(o => `<li>${o}</li>`).join('');
-            let videoHTML = project.videoUrl ? `<div class="video-container"><iframe src="https://www.youtube.com/embed/${project.videoUrl.split('youtu.be/')[1] || project.videoUrl.split('v=')[1]}" allowfullscreen></iframe></div>` : '';
+            let techHTML = (p.technologies || []).map(t => `<span class="tech-tag" style="background:#3498db; color:#fff; padding:0.3rem 0.6rem; border-radius:3px; font-size:0.8rem; margin-right:5px; display:inline-block; margin-bottom:5px;">${t}</span>`).join('');
+            let bulletsHTML = (p.bullets || []).map(b => `<li>${b}</li>`).join('');
             
+            let linksHTML = '<div class="project-links">';
+            if (p.githubUrl) linksHTML += `<a href="${p.githubUrl}" target="_blank" class="project-link-btn github">📁 GitHub</a>`;
+            if (p.reportUrl) linksHTML += `<a href="${p.reportUrl}" target="_blank" class="project-link-btn report">📄 Report PDF</a>`;
+            if (p.slidesUrl) linksHTML += `<a href="${p.slidesUrl}" target="_blank" class="project-link-btn slides">📊 Slides PDF</a>`;
+            if (p.videoUrl) linksHTML += `<a href="${p.videoUrl}" target="_blank" class="project-link-btn video">📺 Watch Video</a>`;
+            linksHTML += '</div>';
+
+            let contributorsHTML = (p.contributors && p.contributors.length > 0) ? `
+                <div class="contributors">
+                    <h4>Collaborators</h4>
+                    <div class="contributors-list">
+                        ${p.contributors.map(c => `<span class="contributor-tag">${c}</span>`).join('')}
+                    </div>
+                </div>
+            ` : '';
+
+            let videoHTML = '';
+            if (p.videoUrl) {
+                let vId = p.videoUrl.includes('v=') ? p.videoUrl.split('v=')[1].split('&')[0] : p.videoUrl.split('/').pop();
+                videoHTML = `<div class="project-section"><h3>Demonstration</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/${vId}" allowfullscreen></iframe></div></div>`;
+            }
+
             detailsDiv.innerHTML = `
-                <h2>${project.title}</h2>
-                <p><em>${project.date}</em></p>
+                <h2 style="color: #2c3e50; margin-bottom:0.5rem;">${p.title}</h2>
+                <p><em>${p.date}</em></p>
+                ${linksHTML}
+                ${contributorsHTML}
+                <div class="project-section"><h3>Key Technical Work</h3><ul>${bulletsHTML}</ul></div>
                 <div class="project-section"><h3>Technologies</h3><div class="tech-tags">${techHTML}</div></div>
-                <div class="project-section"><h3>Summary</h3><p>${summary}</p></div>
-                <div class="project-section"><h3>Objectives</h3><ul>${objectivesHTML}</ul></div>
                 ${videoHTML}
-                <div class="project-section"><h3>Results</h3><p>${project.results || ''}</p></div>
             `;
             modal.classList.add('active');
         }
 
-        // Award Popup Logic
         function openAward(year, title, description) {
             const modal = document.getElementById('projectModal');
             const detailsDiv = document.getElementById('projectDetails');
-            
             detailsDiv.innerHTML = `
                 <div style="text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 1rem; margin-bottom: 1.5rem;">
                     <h2 style="color: #2c3e50;">${title}</h2>
@@ -1072,7 +1182,6 @@
         }
 
         function closeProject() { document.getElementById('projectModal').classList.remove('active'); }
-
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1082,7 +1191,6 @@
                 window.scrollTo(0, 0);
             });
         });
-
         document.getElementById('projectModal').addEventListener('click', function(e) { if (e.target === this) closeProject(); });
     </script>
 </body>
