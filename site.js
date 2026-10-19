@@ -62,12 +62,12 @@ const photoPrompt = title => ({
 }[title] || 'Add a representative project image, diagram, or screenshot.');
 const projectCard = (p,index,featured=false) => {
   const discipline = disciplineFor(p.course);
-  const visual = p.image ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.imageAlt || p.title)}" loading="lazy">` : artwork(p.course || '', 'project');
+  const visual = p.image ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.imageAlt || p.title)}" loading="lazy">${p.imageCaption ? `<span class="image-caption">${escapeHTML(p.imageCaption)}</span>` : ''}` : artwork(p.course || '', 'project');
   return `<article class="project-feature ${featured?'is-featured':''}"><div class="project-visual">${visual}<span class="project-discipline">${discipline.label}</span></div><div class="project-feature-body"><p class="project-course">${p.course ? escapeHTML(p.course) : 'Independent project'}</p><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><div class="project-feature-meta"><span>${escapeHTML((p.technologies || []).slice(0,3).join(' · '))}</span><button type="button" class="project-button" data-project="${index}">View project <span aria-hidden="true">↗</span></button></div>${!p.image?`<p class="photo-prompt"><strong>Suggested visual:</strong> ${escapeHTML(photoPrompt(p.title))}</p>`:''}</div></article>`;
 };
 const renderProjectShowcase = () => {
   const query = $('course-search').value.trim().toLowerCase();
-  const projects = data.projects.map((p,index)=>({p,index})).filter(({p})=>[p.title,p.summary,p.course || '',...(p.technologies||[])].join(' ').toLowerCase().includes(query));
+  const projects = data.projects.map((p,index)=>({p,index})).filter(({p})=>p.highlight === true && [p.title,p.summary,p.course || '',...(p.technologies||[])].join(' ').toLowerCase().includes(query));
   $('project-showcase').innerHTML = projects.map(({p,index},i)=>projectCard(p,index,i<3)).join('') || '<p class="empty">No projects match this search.</p>';
 };
 let courseFilter = 'projects';
@@ -81,7 +81,7 @@ function renderCourses(){
   $('course-list').innerHTML = courses.map(c=>{
     const projects=courseProjects(c.code), resources=courseResources(c.code);
     const discipline = disciplineFor(c.code);
-    return `<article id="${slug(c.code)}" class="course-card">${c.image?`<img class="course-image" src="${escapeHTML(c.image)}" alt="${escapeHTML(c.imageAlt || c.title)}" loading="lazy">`:artwork(c.code)}<div class="course-body"><span class="course-code">${escapeHTML(c.code)}</span><p class="date">${escapeHTML(c.year)}</p><h3>${escapeHTML(c.title)}</h3><p>${escapeHTML(c.description)}</p>${projects.map(p=>`<button type="button" class="project-button" data-project="${data.projects.indexOf(p)}"><span>${escapeHTML(p.title)}</span><span aria-hidden="true">↗</span></button>`).join('')}${resources.length?`<details class="course-resources"><summary>${resources.length} study ${resources.length===1?'resource':'resources'}</summary>${resources.map(r=>link(r.url,r.title)).join('')}</details>`:''}</div></article>`;
+    return `<article id="${slug(c.code)}" class="course-card">${c.image?`<div class="course-image-wrap"><img class="course-image" src="${escapeHTML(c.image)}" alt="${escapeHTML(c.imageAlt || c.title)}" loading="lazy">${c.imageCaption ? `<span class="image-caption">${escapeHTML(c.imageCaption)}</span>` : ''}</div>`:artwork(c.code)}<div class="course-body"><span class="course-code">${escapeHTML(c.code)}</span><p class="date">${escapeHTML(c.year)}</p><h3>${escapeHTML(c.title)}</h3><p>${escapeHTML(c.description)}</p>${projects.map(p=>`<button type="button" class="project-button" data-project="${data.projects.indexOf(p)}"><span>${escapeHTML(p.title)}</span><span aria-hidden="true">↗</span></button>`).join('')}${resources.length?`<details class="course-resources"><summary>${resources.length} study ${resources.length===1?'resource':'resources'}</summary>${resources.map(r=>link(r.url,r.title)).join('')}</details>`:''}</div></article>`;
   }).join('') || '<p class="empty">No courses match. Try another search or select All courses.</p>';
   renderProjectShowcase();
 }

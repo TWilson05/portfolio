@@ -34,11 +34,13 @@ For example, prepend a publication to `publications`:
 }
 ```
 
-Add a project by copying an existing entry in `projects`. Set `course` to the exact course code in `courses`, such as `CPEN 221`; the `course` field is optional, so independent research, personal builds, and future work can appear in the project showcase without being forced into a course. Multiple projects can share a course. Optional links are `githubUrl`, `reportUrl`, `slidesUrl`, `videoUrl`, and `storyMapUrl`; omit any you do not have. Add `image` and `imageAlt` when you have a project photo, map, screenshot, or diagram. Cards without images show an editor prompt suggesting a useful visual. Project cards and detail dialogs update automatically.
+Add a project by copying an existing entry in `projects`. Set `course` to the exact course code in `courses`, such as `CPEN 221`; the `course` field is optional, so independent research, personal builds, and future work can appear in the project showcase without being forced into a course. Set `highlight: true` when you want the project in the visual showcase; leave it out or set it to `false` for projects that should remain discoverable through their course. Multiple projects can share a course. Optional links are `githubUrl`, `reportUrl`, `slidesUrl`, `videoUrl`, and `storyMapUrl`; omit any you do not have. Add `image` and `imageAlt` when you have a project photo, map, screenshot, or diagram. Cards without images show an editor prompt suggesting a useful visual. Project cards and detail dialogs update automatically.
 
 Add a resource once in `resources`, with its `title`, `description`, `url`, and a `courses` array, such as `["PHYS 157", "PHYS 158"]`. It appears both in the resource library and in every matching course. Course filters automatically highlight entries containing projects or resources.
 
-Images can live in [content/photos](./content/photos). Change `profile.banner` or `profile.headshot` to their relative paths. A course can optionally have `image` and `imageAlt` fields; otherwise project courses use decorative line illustrations. Adjust image crops with `object-position` in [styles.css](./styles.css).
+Images can live in [content/photos](./content/photos). Change `profile.banner` or `profile.headshot` to their relative paths. A course can optionally have `image`, `imageAlt`, and `imageCaption` fields; otherwise courses use decorative discipline illustrations. Adjust image crops with `object-position` in [styles.css](./styles.css).
+
+`imageAlt` is accessibility text: it becomes the image’s HTML `alt` attribute. Screen readers read it aloud, and browsers may show it if the image cannot load. It intentionally does not change the visible image, add a caption, or modify the crop. If you want words visible on the card, use `imageCaption`; if you want to change the image itself, update `image`.
 
 Most text is escaped automatically. Only `experience` bullet strings intentionally support trusted HTML, allowing inline links. Do not insert untrusted HTML there.
 

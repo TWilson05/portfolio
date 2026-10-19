@@ -490,6 +490,9 @@ nav a {
 .project-feature.is-featured { border-color:#b7cdbd }
 .project-visual { height:170px; position:relative; overflow:hidden; background:#dce7de }
 .project-visual>img { width:100%; height:100%; object-fit:cover; display:block }
+.course-image-wrap { position:relative; height:145px; overflow:hidden }
+.course-image-wrap .course-image { height:100% }
+.image-caption { position:absolute; left:12px; right:12px; bottom:10px; color:#fff; background:#183e3bcc; padding:4px 7px; border-radius:3px; font-size:10px; line-height:1.3 }
 .project-visual .course-art { height:100%; border:0 }
 .project-visual .course-art svg { opacity:.95; transform:scale(1.25) }
 .project-visual .course-art .art-label { display:none }

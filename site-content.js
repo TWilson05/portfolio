@@ -368,7 +368,8 @@ window.SITE_CONTENT = {
       "githubUrl": "https://github.com/TWilson05/EOSC-410-Final-Project",
       "slidesUrl": "content/projects/EOSC_Final_Project_Presentation_Slides.pdf",
       "course": "EOSC 410",
-      "image": "content/photos/projects/EOSC410.png"
+      "image": "content/photos/projects/EOSC410.png",
+      "highlight": true
     },
     {
       "title": "Geophysical Electromagnetic Detector",
@@ -399,6 +400,7 @@ window.SITE_CONTENT = {
       "slidesUrl": "content/projects/2459_Underground_Imager_Presentation.pdf",
       "course": "ENPH 479",
       "image": "content/photos/projects/GEMs_capstone.png",
+      "highlight": true,
     },
     {
       "title": "Continuum Tube Robot",
@@ -425,7 +427,8 @@ window.SITE_CONTENT = {
       "reportUrl": "content/projects/2406_Continuum_Robot_Final_Report.pdf",
       "slidesUrl": "content/projects/2406_Continuum_Robot_Presentation.pdf",
       "course": "ENPH 459",
-      "image": "content/photos/projects/Continuum_robot_CAD.png"
+      "image": "content/photos/projects/Continuum_robot_CAD.png",
+      "highlight": true
     },
     {
       "title": "Simulated License Plate Detecting Robot",
@@ -454,7 +457,8 @@ window.SITE_CONTENT = {
       "reportUrl": "content/projects/ENPH_353_Final_Report.pdf",
       "videoUrl": "https://youtu.be/k3zzYlgzKM8",
       "course": "ENPH 353",
-      "image": "content/photos/projects/ENPH353_sim.png"
+      "image": "content/photos/projects/ENPH353_sim.png",
+      "highlight": true
     },
     {
       "title": "Autonomous Treasure-Finding Robot",
@@ -481,7 +485,8 @@ window.SITE_CONTENT = {
       ],
       "githubUrl": "https://github.com/spencerbradbury/enph253",
       "videoUrl": "https://youtu.be/6RmUjTOywKo",
-      "course": "ENPH 253"
+      "course": "ENPH 253",
+      "highlight": true
     },
     {
       "title": "WikiMediator Server",
@@ -574,7 +579,8 @@ window.SITE_CONTENT = {
         "Amanda Quail"
       ],
       "reportUrl": "content/projects/GEOS373_Final_Poster.pdf",
-      "course": "GEOS 373"
+      "course": "GEOS 373",
+      "highlight": true
     },
     {
       "title": "Potential Campsite Locations on Vancouver Island",
