@@ -1,1468 +1,296 @@
+﻿
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tyler Wilson - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f4f4f4;
-        }
-
-        /* Navigation */
-        nav {
-            background: #2c3e50;
-            color: #fff;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav h1 {
-            font-size: 1.5rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        nav a:hover {
-            color: #3498db;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .page {
-            display: none;
-            margin-top: 80px;
-            padding: 2rem 0;
-            min-height: calc(100vh - 80px);
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Section Styling */
-        section {
-            background: #fff;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        section h2 {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid #3498db;
-        }
-
-        /* Experience Cards */
-        .experience-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .experience-item:last-child {
-            border-bottom: none;
-        }
-
-        .experience-item h3 {
-            color: #3498db;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item ul {
-            margin-left: 20px;
-        }
-
-        .experience-item .duration {
-            color: #7f8c8d;
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Teaching Assistantship Section */
-        .ta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .ta-item {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #27ae60;
-        }
-
-        .ta-item h4 {
-            color: #2c3e50;
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .ta-item .years {
-            font-size: 0.85rem;
-            color: #7f8c8d;
-            font-style: italic;
-        }
-
-        /* Compact Awards Section */
-        .awards-compact-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-        }
-
-        .award-compact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.95rem;
-            padding: 0.6rem 0.8rem;
-            background: #f8f9fa;
-            border-radius: 4px;
-            transition: background 0.2s, transform 0.1s;
-        }
-
-        .award-compact-item.has-info {
-            cursor: pointer;
-            border-right: 3px solid #3498db;
-        }
-
-        .award-compact-item.has-info:hover {
-            background: #ebf5fb;
-            transform: translateX(3px);
-        }
-
-        .award-compact-item .year {
-            font-weight: bold;
-            color: #3498db;
-            min-width: 80px;
-            font-size: 0.85rem;
-        }
-
-        .award-compact-item .title {
-            color: #333;
-            flex-grow: 1;
-        }
-
-        .award-compact-item .info-icon {
-            font-size: 0.75rem;
-            color: #3498db;
-            opacity: 0.7;
-        }
-
-        /* Publication Section */
-        .publication-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #8e44ad;
-            position: relative;
-        }
-
-        .publication-item .citation {
-            font-size: 0.95rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .poster-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: #e67e22;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            transition: background 0.3s;
-        }
-
-        .poster-btn:hover {
-            background: #d35400;
-        }
-
-        /* Education Section */
-        .education-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .education-item:last-child {
-            border-bottom: none;
-        }
-
-        .education-item h3 {
-            color: #3498db;
-            margin-bottom: 0.3rem;
-        }
-
-        .education-item .degree {
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .education-item .year {
-            color: #7f8c8d;
-            font-style: italic;
-        }
-
-        /* Projects List */
-        .projects-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .project-list-item {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 5px solid #3498db;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-list-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-
-        .project-list-item .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-list-item h3 {
-            color: #2c3e50;
-            margin-bottom: 0.3rem;
-        }
-
-        .project-list-item .date {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            margin-left: 1rem;
-        }
-
-        .project-list-item p {
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            overflow-y: auto;
-            padding: 2rem 0;
-        }
-
-        .modal.active {
-            display: block;
-        }
-
-        .modal-content {
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: 10px;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #7f8c8d;
-            background: none;
-            border: none;
-            line-height: 1;
-            padding: 0.5rem;
-        }
-
-        .modal-close:hover {
-            color: #2c3e50;
-        }
-
-        /* Project Links */
-        .project-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .project-link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.2rem;
-            background: #2c3e50;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.95rem;
-            transition: background 0.3s;
-        }
-
-        .project-link-btn:hover {
-            background: #34495e;
-        }
-
-        .project-link-btn.github { background: #24292e; }
-        .project-link-btn.report { background: #e74c3c; }
-        .project-link-btn.slides { background: #3498db; }
-        .project-link-btn.video { background: #c0392b; }
-        .project-link-btn.storymap { background: #0079c1; }
-
-        /* Video Embed */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 8px;
-        }
-
-        /* Contributors */
-        .contributors {
-            margin: 1.5rem 0;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .contributors h4 {
-            color: #2c3e50;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-        }
-
-        .contributors-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .contributor-tag {
-            background: #3498db;
-            color: #fff;
-            padding: 0.4rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .project-section {
-            margin: 1.5rem 0;
-        }
-
-        .project-section h3 {
-            color: #2c3e50;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .project-section p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
-        }
-
-        .project-section ul {
-            padding-left: 1.5rem;
-            color: #666;
-        }
-
-        .project-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Download Btn */
-        .download-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #27ae60;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            transition: background 0.3s;
-        }
-
-        .download-btn:hover {
-            background: #229954;
-        }
-
-        /* Educational Resources */
-        .resource-list {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .resource-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 5px;
-        }
-
-        .resource-item .info h3 {
-            color: #2c3e50;
-            margin-bottom: 0.3rem;
-        }
-
-        .resource-item .info p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .resource-btn {
-            padding: 0.5rem 1rem;
-            background: #e74c3c;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            white-space: nowrap;
-        }
-
-        .resource-btn:hover {
-            background: #c0392b;
-        }
-
-        /* Courses Styling */
-        .course-year-header {
-            color: #2c3e50;
-            font-size: 1.4rem;
-            margin: 1rem 0;
-            padding-left: 0.5rem;
-            border-left: 5px solid #3498db;
-        }
-
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .course-card {
-            background: #fff;
-            border: 1px solid #e1e4e8;
-            border-radius: 8px;
-            padding: 1.2rem;
-            border-top: 4px solid #3498db;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .course-card .course-code {
-            color: #3498db;
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.4rem;
-            display: block;
-        }
-
-        .course-card h3 {
-            color: #2c3e50;
-            font-size: 1rem;
-            margin-bottom: 0.6rem;
-            line-height: 1.3;
-        }
-
-        .course-card p {
-            color: #666;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav .container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .awards-compact-list {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .project-list-item .project-header {
-                flex-direction: column;
-            }
-
-            .project-list-item .date {
-                margin-left: 0;
-                margin-top: 0.3rem;
-            }
-
-            .resource-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .modal-content {
-                padding: 2rem 1.5rem;
-                margin: 0 1rem;
-            }
-
-            .project-links {
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="container">
-            <h1>Tyler Wilson</h1>
-            <ul>
-                <li><a href="#" data-page="home">Home</a></li>
-                <li><a href="#" data-page="projects">Projects</a></li>
-                <li><a href="#" data-page="courses">Courses</a></li>
-                <li><a href="#" data-page="resources">Educational Resources</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Home Page -->
-    <div id="home" class="page active">
-        <div class="container">
-            <div class="hero">
-                <h2>Tyler Wilson</h2>
-                <p>tb.wilson05@gmail.com | 604-230-6334</p>
-            </div>
-
-            <section id="about">
-                <h2>About Me</h2>
-                <p>Hi, I'm a current Geophysics PhD student at UBC with a BASc in Engineering Physics. I'm interested in applying interpretable machine-learning techniques to physics-based problems. Along with this, I enjoy creating high-quality educational resources and compete at a National level in track and field.</p>
-            </section>
-
-            <section id="experience">
-                <h2>Work Experience</h2>
-                <div class="experience-item">
-                    <h3>Data Scientist - Health Canada</h3>
-                    <p class="duration">May 2024 - August 2024</p>
-                    <ul>
-                        <li>Built a localized Retrieval Augmented Generation (RAG) model to extract insights from confidential Covid-19 data.</li>
-                        <li>Created an <a href="https://github.com/hc-sc-ocdo-bdpd/faiss-search/tree/dev">open-source Python library</a> to streamline the development of RAG pipelines for future projects.</li>
-                        <li>Helped develop an AI chatbot using a RAG model, improving company database navigation satisfaction for 70% of users.</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>Instructional Designer - UBC Physics and Astronomy</h3>
-                    <p class="duration">May 2023 - January 2025</p>
-                    <ul>
-                        <li>Worked with a team to improve and redesign UBC's Physics 158 course, taken by over 1000 students annually.</li>
-                        <li>Created a repository of custom-made and refurbished homework problems using LaTeX and Tikz.</li>
-                        <li>Contributed to structural changes to how the course is delivered based on student and instructor feedback.</li>
-                        <li>Compared student survey and course data to previous years to determine the effectiveness of the changes implemented.</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>Data Engineer - Matt3r</h3>
-                    <p class="duration">May 2023 - August 2023</p>
-                    <ul>
-                        <li>Wrote an algorithm on an embedded-ML chip that classifies vehicle left/right turns in real-time with 95% precision.</li>
-                        <li>Implemented a KNN algorithm with Dynamic Time Warping to classify time-series internal measurement unit data.</li>
-                        <li>Trained the KNN on K-means clustered data to decrease size and runtime of the model without compromising performance.</li>
-                        <li>Created a cron job in AWS for continuous monitoring of the performance of the classification algorithm.</li>
-                        <li>Conducted firmware experiments to identify and rectify time drift issues between the gyroscope and system clock.</li>
-                        <li>Improved the AHRS gravity compensation algorithm accuracy through cross-comparison with Tesla's vehicle log data.</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>Open Education Resource Developer - UBC Mechanical Engineering</h3>
-                    <p class="duration">January 2022 - April 2022</p>
-                    <ul>
-                        <li>Created 50 open-source mechanics problems programmed using WeBWorK for an online textbook and university courses.</li>
-                        <li>Presented at ASEE conference on benefits of problem creation in education, placing 2nd.</li>
-                        <li>Corrected issues in questions being tested in UVic and Douglas College Physics courses.</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>Field Specialist - Encepta</h3>
-                    <p class="duration">May 2021 - August 2021</p>
-                    <ul>
-                        <li>Created a detailed audit map of the Eastlink cable network across Delta and the Sunshine Coast using ArcGIS.</li>
-                        <li>Beta tested new data collection processes and technology in the field using ArcGIS.</li>
-                        <li>Trained and mentored new hires joining the project.</li>
-                        <li>Evaluated engineering drawings and verified field cable placement against Telus records.</li>
-                        <li>Canvassed neighborhoods for telephone pole safety checks, updating inventory, GPS data, and pictures of utilities for Telus.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="teaching">
-                <h2>Teaching Assistantships</h2>
-                <div class="ta-grid">
-                    <div class="ta-item">
-                        <h4>EOSC 410/510: Geoscientific Data Analysis</h4>
-                        <p class="years">2025, 2026</p>
-                    </div>
-                    <div class="ta-item">
-                        <h4>ENVR 300: Introduction to Research in Environmental Science</h4>
-                        <p class="years">2026</p>
-                    </div>
-                    <div class="ta-item">
-                        <h4>PHYS 158: Introductory Physics for Engineers II</h4>
-                        <p class="years">2023, 2024, 2025</p>
-                    </div>
-                    <div class="ta-item">
-                        <h4>PHYS 157: Introductory Physics for Engineers I</h4>
-                        <p class="years">2024</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="presentations">
-                <h2>Academic Presentations & Publications</h2>
-                <div class="publication-item">
-                    <p class="citation">
-                        Wilson, T & Lapenna, J. (2022). <strong>Student Experience in Self-Learning Mechanics Through OER Development.</strong> 
-                        Presented at the American Society for Engineering Education (ASEE) Zone IV Conference, Vancouver, Canada.
-                    </p>
-                    <a href="content/publications/ASEE_Zone_IV_Poster_2022.pdf" target="_blank" class="poster-btn">
-                        <span>📄</span> View Poster PDF
-                    </a>
-                </div>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <div class="education-item">
-                    <h3>University of British Columbia</h3>
-                    <p class="degree">PhD in Geophysics</p>
-                    <p class="year">2025 - Present</p>
-                    <p>Thesis topic: Reliability of Deep Learning for Glacier Runoff and Streamflow Modeling Under a Changing Climate </p>
-                </div>
-                <div class="education-item">
-                    <h3>University of British Columbia</h3>
-                    <p class="degree">Bachelor of Applied Science in Engineering Physics</p>
-                    <p class="year">2020 - 2025</p>
-                    <p>Graduated with honors and Wesbrook Scholar distinction; UBC's premier undergraduate award.</p>
-                </div>
-            </section>
-
-            <section id="awards">
-                <h2>Awards & Recognitions</h2>
-                <div class="awards-compact-list">
-                    <div class="award-compact-item has-info" onclick="openAward('Oct 2026 ($2,000)', 'Masonic Bursaries Award', 'Awarded for academic merit and financial need.')">
-                        <span class="year">Oct 2026</span>
-                        <span class="title">Masonic Bursaries Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2026 ($840)', 'President\'s Academic Excellence Initiative PhD Award', 'Awarded for academic excellence.')">
-                        <span class="year">Sep 2026</span>
-                        <span class="title">President's Academic Excellence Initiative PhD Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2026 ($3,825.68)', 'Faculty of Science PhD Tuition Award', 'Funded by the Graduate Support Initiative, awards are offered annually to domestic and international students who are registered full-time in PhD degree programs in the Faculty of Science at The University of British Columbia. Awards are made on the recommendation of the Faculty of Science in consultation with the Faculty of Graduate and Postdoctoral Studies.')">
-                        <span class="year">Sep 2026</span>
-                        <span class="title">Faculty of Science PhD Tuition Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2026 ($3,000)', 'Masonic Bursaries Award', 'Awarded for academic merit and financial need.')">
-                        <span class="year">Sep 2026</span>
-                        <span class="title">Masonic Bursaries Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('May 2026 ($27,000)', 'NSERC Canada Graduate Research Scholarship Master\'s Award', 'The Natural Sciences and Engineering Research Council (NSERC) offers funding to support Master\'s students undertaking research in natural sciences and engineering. The awards are made on the recommendation of the Faculty of Graduate and Postdoctoral Studies.')">
-                        <span class="year">May 2026</span>
-                        <span class="title">NSERC Canada Graduate Research Scholarship Master's Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2025 ($5,663.52)', 'Faculty of Science Master\'s Tuition Award', 'Funded by the Faculty of Science, awards are offered annually to students who are registered full-time in a thesis-based Master\'s degree program and whose primary supervisor is a faculty member in the Faculty of Science at The University of British Columbia. Awards are made on the recommendation of the Faculty of Science in consultation with the Faculty of Graduate and Postdoctoral Studies.')">
-                        <span class="year">Sep 2026</span>
-                        <span class="title">Faculty of Science Master's Tuition Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2025 ($3,000)', 'Masonic Bursaries Award', 'Awarded for academic merit and financial need.')">
-                        <span class="year">Sep 2025</span>
-                        <span class="title">Masonic Bursaries Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Aug 2025', 'Canadian Champion', 'National champion in the 20km racewalk.')">
-                        <span class="year">Aug 2025</span>
-                        <span class="title">Canadian Champion (20km Racewalk)</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('May 2025 ($1,000)', 'UBC Track and Field Award', 'Incentive-based award for placing in the top 3 at the 2025 NAIA Track and Field Championships.')">
-                        <span class="year">May 2025</span>
-                        <span class="title">UBC Track and Field Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('May 2025', 'Academic All Canadian', 'Awarded to student athletes who achieved a yearly academic average >80%.')">
-                        <span class="year">May 2025</span>
-                        <span class="title">Academic All Canadian</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2024 ($3,000)', 'Masonic Bursaries Award', 'Awarded for academic merit and financial need.')">
-                        <span class="year">Sep 2024</span>
-                        <span class="title">Masonic Bursaries Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Jun 2024', 'Canadian Champion', 'National champion in the 20km racewalk.')">
-                        <span class="year">Jun 2024</span>
-                        <span class="title">Canadian Champion (20km Racewalk)</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('May 2024', 'Academic All Canadian', 'Awarded to student athletes who achieved a yearly academic average >80%.')">
-                        <span class="year">May 2024</span>
-                        <span class="title">Academic All Canadian</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Apr 2024 ($10,000)', 'John H. Mitchell Scholarship', 'Awarded to student-athletes with outstanding academic performance and community involvement.')">
-                        <span class="year">Apr 2024</span>
-                        <span class="title">John H. Mitchell Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Apr 2024 ($1,000)', 'Wesbrook Scholar Distinction', 'UBC\'s most prestigious undergraduate designation offered to senior students with outstanding academic performance, leadership, and involvement in student and community activities.')">
-                        <span class="year">Apr 2024</span>
-                        <span class="title">Wesbrook Scholar Distinction</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Oct 2023 ($2,350)', 'Ahmad Bhimani Memorial Scholarship', 'Scholarship awarded on the recommendation of the Faculty of Applied Science to a student entering fourth year who demonstrates a strong commitment to, and enthusiasm for, academic activities, community endeavours, and sports.')">
-                        <span class="year">Oct 2023</span>
-                        <span class="title">Ahmad Bhimani Memorial Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Oct 2023 ($808.30)', 'UBC Engineering Scholarship', 'Scholarship for academic excellence in Engineering made on the recommendation of the Faculty of Applied Science.')">
-                        <span class="year">Oct 2023</span>
-                        <span class="title">UBC Engineering Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2023 ($1,500)', 'Hugh M Brock Go Global Scholarship', 'Awarded for international academic exchange.')">
-                        <span class="year">Sep 2023</span>
-                        <span class="title">Hugh M Brock Go Global Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Aug 2023 ($1,500)', 'Trek Excellence Scholarship', 'Annual scholarship awarded to the top 5% of students per faculty.')">
-                        <span class="year">Aug 2023</span>
-                        <span class="title">Trek Excellence Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Jul 2023', 'Canadian Champion', 'National champion in the 20km racewalk.')">
-                        <span class="year">Jul 2023</span>
-                        <span class="title">Canadian Champion (20km Racewalk)</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('May 2023', 'Academic All Canadian', 'Awarded to student athletes who achieved a yearly academic average >80%.')">
-                        <span class="year">May 2023</span>
-                        <span class="title">Academic All Canadian</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Oct 2022 ($1,200)', 'A.H. Younger Memorial Scholarship', 'Scholarship for academic excellence for an Engineering student in the Faculty of Applied Science who is also a member of a recognized athletic team at The University of British Columbia. The award is made on the recommendation of the Faculty.')">
-                        <span class="year">Oct 2022</span>
-                        <span class="title">A.H. Younger Memorial Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2022 ($750)', 'Trek Excellence Scholarship', 'Annual scholarship awarded to the top 5% of students per faculty.')">
-                        <span class="year">Sep 2022</span>
-                        <span class="title">Trek Excellence Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2022 ($2,000)', 'Masonic Bursaries Award', 'Awarded for academic merit and financial need.')">
-                        <span class="year">Sep 2022</span>
-                        <span class="title">Masonic Bursaries Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('May 2022', 'Academic All Canadian', 'Awarded to student athletes who achieved a yearly academic average >80%.')">
-                        <span class="year">May 2022</span>
-                        <span class="title">Academic All Canadian</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Apr 2022', 'UBC Track & Field Rookie of the Year', 'Awarded to the most outstanding rookie track and field athlete from the previous season.')">
-                        <span class="year">Apr 2022</span>
-                        <span class="title">UBC Track & Field Rookie of the Year</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Oct 2021 ($1,500)', 'Trek Excellence Scholarship', 'Annual scholarship awarded to the top 5% of students per faculty.')">
-                        <span class="year">Oct 2021</span>
-                        <span class="title">Trek Excellence Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('May 2021', 'Academic All Canadian', 'Awarded to student athletes who achieved a yearly academic average >80%.')">
-                        <span class="year">May 2021</span>
-                        <span class="title">Academic All Canadian</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2020 ($14,000)', 'UBC Track and Field Scholarship', 'Scholarship awarded for athletic excellence.')">
-                        <span class="year">Sep 2020</span>
-                        <span class="title">UBC Track and Field Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2020 ($1,250)', 'BC Achievement Scholarship', 'Awarded to top graduates in BC.')">
-                        <span class="year">Sep 2020</span>
-                        <span class="title">BC Achievement Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2020 ($500)', 'Masonic Bursaries Award', 'Awarded for academic merit and financial need.')">
-                        <span class="year">Sep 2020</span>
-                        <span class="title">Masonic Bursaries Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2020 ($500)', 'B&B Contracting Award', 'Awarded to top graduates at Surrey high schools')">
-                        <span class="year">Jun 2020</span>
-                        <span class="title">B&B Contracting Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2020 ($500)', 'Surrey Teacher\'s Association Scholarship', 'Awarded to top graduates at Surrey high schools')">
-                        <span class="year">Jun 2020</span>
-                        <span class="title">Surrey Teacher's Association Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Sep 2020 ($300)', 'Eva Green Memorial Scholarship', 'Awarded to top graduates at Surrey high schools')">
-                        <span class="year">Jun 2020</span>
-                        <span class="title">Eva Green Memorial Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Jun 2020 ($1,250)', 'Harry Jerome Scholarship', 'Awarded to graduating high school track and field athletes who display academic and athletic excellence.')">
-                        <span class="year">Jun 2020</span>
-                        <span class="title">Harry Jerome Scholarship</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Mar 2020 ($500)', 'Frank Reynolds Vancouver Spirit Run Bursary', 'Awarded to graduating high school cross country athletes who display academic and athletic excellence.')">
-                        <span class="year">Mar 2020</span>
-                        <span class="title">Frank Reynolds Vancouver Spirit Run Bursary</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                    <div class="award-compact-item has-info" onclick="openAward('Aug 2019', 'Legion Nationals Sportsmanship Award', 'Awarded for displaying outstanding sportsmanship at the 2019 Canadian Legion National Track and Field Championships.')">
-                        <span class="year">Aug 2019</span>
-                        <span class="title">Legion Nationals Sportsmanship Award</span>
-                        <span class="info-icon">ⓘ</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="resume">
-                <h2>Resume</h2>
-                <p>Download my complete resume to learn more about my experience, skills, and qualifications.</p>
-                <a href="TylerWilsonResume.pdf" class="download-btn">📄 Download Resume (PDF)</a>
-            </section>
-        </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="Tyler Wilson — Geophysics PhD student at UBC. Research in reliable machine learning, hydrology, and a changing climate." name="description"/>
+  <meta content="#183e3b" name="theme-color"/>
+  <title>
+   Tyler Wilson | Geophysics &amp; Machine Learning
+  </title>
+  <link href="styles.css" rel="stylesheet"/>
+  <script defer="" src="site-content.js">
+  </script>
+  <script defer="" src="site.js">
+  </script>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Skip to content
+  </a>
+  <header class="site-header">
+   <nav aria-label="Main navigation" class="container">
+    <a class="wordmark" href="#home">
+     TW
+     <span>
+      .
+     </span>
+    </a>
+    <div class="nav-links">
+     <a href="#about">
+      About
+     </a>
+     <a href="#publications">
+      Research
+     </a>
+     <a href="#experience">
+      Experience
+     </a>
+     <a href="#courses">
+      Courses &amp; projects
+     </a>
+     <a href="#resources">
+      Resources
+     </a>
     </div>
-
-    <!-- Projects Page -->
-    <div id="projects" class="page">
-        <div class="container">
-            <section>
-                <h2>My Projects</h2>
-                <p style="margin-bottom: 2rem; color: #666;">A comprehensive list of engineering and software projects. Click on any project to view details, collaborators, reports, and slides.</p>
-                <div class="projects-list">
-                    <div class="project-list-item" onclick="openProject(2)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Geophysical Electromagnetic Detector</h3>
-                                <p class="date">September 2024 - April 2025</p>
-                            </div>
-                        </div>
-                        <p>Frequency domain electromagnetic survey device for unexploded ordinates (UXO) detection.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(9)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Herring Spawn Classification via Satellite Imagery</h3>
-                                <p class="date">January 2025 - April 2025</p>
-                            </div>
-                        </div>
-                        <p>Investigating remote sensing methodologies to monitor Pacific Herring spawning events using multi-spectral Sentinel-2 data.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(10)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Potential Campsite Locations on Vancouver Island</h3>
-                                <p class="date">December 2024</p>
-                            </div>
-                        </div>
-                        <p>Multi-criteria GIS analysis identifying optimal backcountry campsite locations based on accessibility, safety, and environmental impact.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(1)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Streamflow Prediction in BC Using Deep Learning</h3>
-                                <p class="date">October 2024 - December 2024</p>
-                            </div>
-                        </div>
-                        <p>LSTM-CNN model trained to forecast daily streamflow values using remote sensing weather data.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(3)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Continuum Tube Robot</h3>
-                                <p class="date">September 2023 - April 2024</p>
-                            </div>
-                        </div>
-                        <p>Soft continuum robot with 1% tip resolution and ML-based kinematics mapping.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(4)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Simulated License Plate Detecting Robot</h3>
-                                <p class="date">September 2022 - December 2022</p>
-                            </div>
-                        </div>
-                        <p>Self-driving car utilizing SIFT, CNNs, and PID control for parking lot navigation and OCR.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(5)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Autonomous Treasure-Finding Robot</h3>
-                                <p class="date">May 2022 - August 2022</p>
-                            </div>
-                        </div>
-                        <p>Fully-autonomous collection robot featuring a custom chassis and ARM-based control system.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(6)">
-                        <div class="project-header">
-                            <div>
-                                <h3>WikiMediator Server</h3>
-                                <p class="date">November 2021 - December 2021</p>
-                            </div>
-                        </div>
-                        <p>Multithreaded server for Wikipedia graph traversal and shortest path computation.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(7)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Email Interaction Analyzer</h3>
-                                <p class="date">November 2021</p>
-                            </div>
-                        </div>
-                        <p>Graph theory based analysis tool for massive email interaction databases.</p>
-                    </div>
-                    <div class="project-list-item" onclick="openProject(8)">
-                        <div class="project-header">
-                            <div>
-                                <h3>Text Document Analyzer</h3>
-                                <p class="date">October 2021</p>
-                            </div>
-                        </div>
-                        <p>Document similarity and sentiment analysis tool utilizing Google AI and DFT-based encryption.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
+    <a class="nav-contact" href="mailto:tb.wilson05@gmail.com">
+     Get in touch
+     <span aria-hidden="true">
+      ↗
+     </span>
+    </a>
+   </nav>
+  </header>
+  <main id="main">
+   <div class="hero" id="home">
+    <img alt="Glacier and river winding through a mountain landscape" class="banner" fetchpriority="high" id="banner"/>
+    <div class="hero-shade">
     </div>
-
-    <!-- Courses Page -->
-    <div id="courses" class="page">
-        <div class="container">
-            <section>
-                <h2>Course History</h2>
-                <p style="margin-bottom: 2rem; color: #666;">A comprehensive overview of coursework completed throughout my Engineering Physics degree and ongoing MSc in Geophysics. Listed in reverse-chronological order.</p>
-                
-                <h3 class="course-year-header">2025/26 - MSc Geophysics</h3>
-                <div class="course-grid">
-                    <div class="course-card"><span class="course-code">EOSC 453</span><h3>Physics of the Earth and Other Planets</h3><p>Physical principles of global geophysics and planetary science.</p></div>
-                    <div class="course-card"><span class="course-code">GEOS 305</span><h3>Introduction to Hydrology</h3><p>Surface water hydrology and physics of the water cycle.</p></div>
-                    <div class="course-card"><span class="course-code">EOSC 595A</span><h3>Directed Studies</h3><p>Advanced individual research in specialized geophysics topics.</p></div>
-                    <div class="course-card"><span class="course-code">FRST 590</span><h3>Statistical Methods in Hydrology</h3><p>statistical methods to analyze hydrological data and assess hydrologic trends and processes.</p></div>
-                </div>
-
-                <h3 class="course-year-header">2024/25 - Year 5</h3>
-                <div class="course-grid">
-                    <div class="course-card"><span class="course-code">ENPH 479</span><h3>Engineering Physics Project III</h3><p>Capstone focused on development of a geophysical electromagnetic scanner.</p></div>
-                    <div class="course-card"><span class="course-code">CIVL 215</span><h3>Fluid Mechanics I</h3><p>Fundamentals of fluid properties, statics, and dynamics.</p></div>
-                    <div class="course-card"><span class="course-code">GEOS 270</span><h3>Geographic Information Science</h3><p>Theory and application of GIS for geoscientific mapping.</p></div>
-                    <div class="course-card"><span class="course-code">EOSC 410</span><h3>Geoscientific Data Analysis and Empirical Modelling</h3><p>Machine learning and data-driven modeling for earth science datasets.</p></div>
-                    <div class="course-card"><span class="course-code">ENPH 352</span><h3>Laboratory Techniques in Physics</h3><p>Advanced experiments and precision measurement techniques.</p></div>
-                    <div class="course-card"><span class="course-code">APSC 450</span><h3>Professional Engineering Practice</h3><p>Engineering ethics, law, and professional responsibility.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 403</span><h3>Statistical Mechanics</h3><p>Statistical physics and thermodynamics of macroscopic ensembles.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 408</span><h3>Optics</h3><p>Study of wave optics, interference, and laser physics.</p></div>
-                    <div class="course-card"><span class="course-code">GEOS 373</span><h3>Introductory Remote Sensing</h3><p>Satellite-based image analysis and remote sensing theory.</p></div>
-                    <div class="course-card"><span class="course-code">ELEC 302</span><h3>Electronic Circuits for Electromechanical Design</h3><p>Integration of sensors, actuators, and power electronics.</p></div>
-                </div>
-
-                <h3 class="course-year-header">2023/24 - Year 4</h3>
-                <div class="course-grid">
-                    <div class="course-card"><span class="course-code">ENPH 459</span><h3>Engineering Physics Project II</h3><p>Major design project focused on soft robotics and instrumentation.</p></div>
-                    <div class="course-card"><span class="course-code">INFR 11130</span><h3>Machine Learning and Pattern Recognition</h3><p>Statistical pattern recognition and ML foundations (Edinburgh).</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 10090</span><h3>Numerical Recipes</h3><p>Computational physics and numerical simulation methods (Edinburgh).</p></div>
-                    <div class="course-card"><span class="course-code">MATH 08066</span><h3>Probability</h3><p>Mathematical theory of probability and random variables (Edinburgh).</p></div>
-                    <div class="course-card"><span class="course-code">MATH 318</span><h3>Probability with Physical Applications</h3><p>Stochastic processes applied to physical sciences.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 400</span><h3>Applied Partial Differential Equations</h3><p>Advanced analytical and numerical methods for PDEs.</p></div>
-                    <div class="course-card"><span class="course-code">ELEC 481</span><h3>Economic Analysis of Engineering Projects</h3><p>Economic modeling and financial assessment for industrial projects.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 401</span><h3>Electromagnetic Theory</h3><p>Advanced electrodynamics, radiation, and relativity.</p></div>
-                    <div class="course-card"><span class="course-code">MECH 466</span><h3>Automatic Control</h3><p>Theory and design of feedback control systems.</p></div>
-                </div>
-
-                <h3 class="course-year-header">2022/23 - Year 3</h3>
-                <div class="course-grid">
-                    <div class="course-card"><span class="course-code">PHYS 301</span><h3>Electricity and Magnetism</h3><p>Study of intermediate electrodynamics and EM wave propagation.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 307</span><h3>Applied Linear Algebra</h3><p>Numerical methods and applications of linear algebra theory.</p></div>
-                    <div class="course-card"><span class="course-code">ENPH 353</span><h3>Engineering Physics Project I</h3><p>Project laboratory focused on design iteration and technical prototyping.</p></div>
-                    <div class="course-card"><span class="course-code">MECH 360</span><h3>Mechanics of Materials</h3><p>Advanced failure theories and mechanical behavior of materials.</p></div>
-                    <div class="course-card"><span class="course-code">MECH 325</span><h3>Machine Design</h3><p>Analysis and design of mechanical components like gears and bearings.</p></div>
-                    <div class="course-card"><span class="course-code">ELEC 221</span><h3>Signals and Systems</h3><p>Mathematical modeling of continuous and discrete-time signals.</p></div>
-                    <div class="course-card"><span class="course-code">APSC 278</span><h3>Engineering Materials</h3><p>Structure and selection criteria for engineering materials.</p></div>
-                    <div class="course-card"><span class="course-code">APSC 279</span><h3>Engineering Materials Laboratory</h3><p>Experimental characterization and microstructural analysis.</p></div>
-                    <div class="course-card"><span class="course-code">CPEN 312</span><h3>Digital Systems and Microcomputers</h3><p>Design of digital logic and embedded microcomputer architectures.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 350</span><h3>Applications of Classical Mechanics</h3><p>Lagrangian and Hamiltonian formulations of mechanical systems.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 304</span><h3>Introduction to Quantum Mechanics</h3><p>Wave mechanics, operators, and the Schrödinger equation.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 305</span><h3>Applied Complex Analysis</h3><p>Contour integration and analytic functions theory.</p></div>
-                </div>
-
-                <h3 class="course-year-header">2021/22 - Year 2</h3>
-                <div class="course-grid">
-                    <div class="course-card"><span class="course-code">MATH 217</span><h3>Multivariable and Vector Calculus</h3><p>Calculus of several variables and vector fields.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 255</span><h3>Ordinary Differential Equations</h3><p>Techniques for first and second-order ODEs.</p></div>
-                    <div class="course-card"><span class="course-code">CPEN 221</span><h3>Software Construction I</h3><p>Large-scale software development using Java.</p></div>
-                    <div class="course-card"><span class="course-code">CIVL 250</span><h3>Engineering and Sustainable Development</h3><p>Sustainable engineering practices and professional impact.</p></div>
-                    <div class="course-card"><span class="course-code">ELEC 204</span><h3>Linear Circuits</h3><p>Analysis of linear DC and AC circuits.</p></div>
-                    <div class="course-card"><span class="course-code">ENPH 259</span><h3>Experimental Techniques</h3><p>Measurement techniques and error analysis lab.</p></div>
-                    <div class="course-card"><span class="course-code">MECH 260</span><h3>Introduction to Mechanics of Materials</h3><p>Stress-strain relationships and structural analysis.</p></div>
-                    <div class="course-card"><span class="course-code">PHIL 120</span><h3>Introduction to Critical Thinking</h3><p>Argument analysis and reasoning methodology.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 250</span><h3>Introduction to Modern Physics</h3><p>Relativity and introductory quantum mechanics.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 203</span><h3>Thermal Physics I</h3><p>Thermodynamics and statistical mechanics.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 257</span><h3>Partial Differential Equations</h3><p>Fourier series and boundary value problems.</p></div>
-                    <div class="course-card"><span class="course-code">ENPH 270</span><h3>Mechanics II</h3><p>Advanced rigid body dynamics and kinematics.</p></div>
-                    <div class="course-card"><span class="course-code">ENPH 253</span><h3>Introduction to Instrument Design</h3><p>Intensive autonomous robotics project lab.</p></div>
-                </div>
-
-                <h3 class="course-year-header">2020/21 - Year 1</h3>
-                <div class="course-grid">
-                    <div class="course-card"><span class="course-code">APSC 100</span><h3>Introduction to Engineering I</h3><p>Engineering practice, ethics, and project management.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 157</span><h3>Introductory Physics for Engineers I</h3><p>Oscillations, waves, and thermodynamics.</p></div>
-                    <div class="course-card"><span class="course-code">WRDS 150B</span><h3>Writing & Research in the Disciplines</h3><p>Academic writing and research skill development.</p></div>
-                    <div class="course-card"><span class="course-code">CHEM 154</span><h3>Chemistry for Engineering</h3><p>Principles of chemistry for engineers.</p></div>
-                    <div class="course-card"><span class="course-code">APSC 160</span><h3>Computation in Design</h3><p>Programming and algorithm design using C.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 100</span><h3>Differential Calculus</h3><p>Foundational differential calculus for scientists.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 101</span><h3>Integral Calculus</h3><p>Integration, series, and application to engineering.</p></div>
-                    <div class="course-card"><span class="course-code">APSC 101</span><h3>Introduction to Engineering II</h3><p>Design cycle and hands-on project collaboration.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 158</span><h3>Introductory Physics for Engineers II</h3><p>Introductory electricity and magnetism.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 159</span><h3>Introductory Physics Laboratory for Engineers</h3><p>Experimental measurement and error analysis.</p></div>
-                    <div class="course-card"><span class="course-code">PHYS 170</span><h3>Mechanics I</h3><p>Statics and dynamics of particles and rigid bodies.</p></div>
-                    <div class="course-card"><span class="course-code">HIST 106</span><h3>Global Environmental History</h3><p>History of global human-environment interactions.</p></div>
-                    <div class="course-card"><span class="course-code">MATH 152</span><h3>Linear Systems</h3><p>Matrix algebra and solving linear equations.</p></div>
-                </div>
-            </section>
-        </div>
+    <div class="container hero-content">
+     <p class="eyebrow">
+      Geophysics / Machine learning / Climate
+     </p>
+     <h1 id="profile-name">
+     </h1>
+     <p id="profile-intro">
+     </p>
+     <p class="hero-location" id="profile-role">
+     </p>
+     <div class="portrait-wrap">
+      <img alt="Tyler Wilson" class="portrait" height="240" id="headshot" width="240"/>
+      <p>
+       Researcher. Engineer. Athlete.
+      </p>
+     </div>
     </div>
-
-    <!-- Educational Resources Page -->
-    <div id="resources" class="page">
-        <div class="container">
-            <section>
-                <h2>Educational Resources</h2>
-                <p style="margin-bottom: 2rem;">During my time at university, I found it helpful to create high quality formula sheets and summary sheets, both for use in open-book exams and for study guides.
-                    I created these sheets using LaTeX and shared them with my peers. 
-                    Some of these formula sheets were used by over 1000 students while others were adopted by my professors for use in midterms or final exams.
-                </p>
-                <p style="margin-bottom: 2rem;">Source code for some of the documents can be accessed here: <a href="https://github.com/TWilson05/Formula_Sheets" target="_blank">https://github.com/TWilson05/Formula_Sheets</a></p>
-                
-                <div class="resource-list">
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC PHYS 401 Formula Sheet</h3><p>Final exam formula sheet for electrodynamics (2024 Spring).</p></div>
-                        <a href="content/educational_resources/Phys_401_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC ELEC 481 Summary Sheet</h3><p>Course summary on engineering economics (2024 Spring).</p></div>
-                        <a href="content/educational_resources/Elec_481_Notes.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC CPEN 312 Summary Sheet</h3><p>Course summary on coding with 8051 assembly (2023 Spring).</p></div>
-                        <a href="content/educational_resources/CPEN_312_Final_Documents.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC APSC 278 Summary Sheet</h3><p>Course summary on engineering materials (2023 Spring).</p></div>
-                        <a href="content/educational_resources/APSC_278_Little_Last_Minute_Things.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MECH 325 Bible</h3><p>Comprehensive how-to guide on solving problems in mechanical design (2022 Fall).</p></div>
-                        <a href="content/educational_resources/Mech_325_Bible.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MECH 325 Summary Sheet</h3><p>Course summary on the more conceptual topics in mechanical design (2022 Fall).</p></div>
-                        <a href="content/educational_resources/MECH_325___Little_Last_Minute_Things.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC ELEC 221 Formula Sheet</h3><p>Final exam formula sheet created for the course professor (2022 Fall).</p></div>
-                        <a href="content/educational_resources/ELEC_221_Final_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC PHYS 250 Formula Sheet</h3><p>Final exam formula sheet for introduction to modern physics (2022 Summer).</p></div>
-                        <a href="content/educational_resources/PHYS_250_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MATH 257 Summary Sheet</h3><p>Course summary on methods for solving partial differential equations (2022 Summer).</p></div>
-                        <a href="content/educational_resources/Math_257_Final_Summary_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MATH 257 Notes</h3><p>Typeset lecture notes on partial differential equations (2022 Summer).</p></div>
-                        <a href="content/educational_resources/Math_257_Notes.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC PHYS 203 Notes</h3><p>Typeset lecture notes on thermodynamics (2022 Summer).</p></div>
-                        <a href="content/educational_resources/PHYS_250_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MECH 260 Formula Sheet</h3><p>Final exam formula sheet for mechanics of materials (2022 Spring).</p></div>
-                        <a href="content/educational_resources/MECH_260_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MATH 217 Formula Sheet</h3><p>Final exam formula sheet for multivariable and vector calculus (2021 Fall).</p></div>
-                        <a href="content/educational_resources/Math_217_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MATH 217 Notes</h3><p>Typeset lecture notes on multivariable and vector calculus (2021 Fall).</p></div>
-                        <a href="content/educational_resources/Math_217_Notes.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MATH 152 Formula Sheet</h3><p>Final exam formula sheet for linear algebra (2021 Spring).</p></div>
-                        <a href="content/educational_resources/MATH_152_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC MATH 152 Notes</h3><p>Typeset lecture notes on linear algebra (2021 Spring).</p></div>
-                        <a href="content/educational_resources/Math_152_Notes.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC PHYS 158 Formula Sheet</h3><p>Final exam formula sheet for introductory physics for engineering II (2021 Spring).</p></div>
-                        <a href="content/educational_resources/PHYS_158_Formula_Sheet.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC PHYS 157 & 158 Notes</h3><p>Handwritten lecture notes on introductory physics for engineering (2021 Spring).</p></div>
-                        <a href="content/educational_resources/Phys 157&158 Notes -Tyler Wilson.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                    <div class="resource-item">
-                        <div class="info"><h3>UBC APSC 101 Summary Sheet</h3><p>Summary sheet for introduction to engineering II (2021 Spring).</p></div>
-                        <a href="content/educational_resources/APSC_101_Course_Summary.pdf" class="resource-btn">Download PDF</a>
-                    </div>
-                </div>
-            </section>
-        </div>
+   </div>
+   <div class="container">
+    <section class="about section" id="about">
+     <div>
+      <p class="eyebrow">
+       A little about me
+      </p>
+      <h2>
+       Curiosity, grounded in science.
+      </h2>
+      <p class="lead" id="about-text">
+      </p>
+      <div class="profile-actions">
+       <div aria-label="Professional profiles" class="socials" id="socials">
+       </div>
+       <a class="text-link" id="resume">
+        Résumé
+        <span aria-hidden="true">
+         ↗
+        </span>
+       </a>
+      </div>
+     </div>
+    </section>
+    <section class="section" id="publications">
+     <div class="section-heading">
+      <div>
+       <p class="eyebrow">
+        01 / Research
+       </p>
+       <h2>
+        Publications &amp; presentations
+       </h2>
+      </div>
+      <p>
+       Exploring better ways to model,
+       <br/>
+       understand, and learn.
+      </p>
+     </div>
+     <div id="publication-list">
+     </div>
+    </section>
+    <section class="section" id="experience">
+     <div class="section-heading">
+      <div>
+       <p class="eyebrow">
+        02 / Experience
+       </p>
+       <h2>
+        Building. Researching. Teaching.
+       </h2>
+      </div>
+     </div>
+     <div class="experience-layout">
+      <div id="experience-list">
+      </div>
+      <aside class="teaching">
+       <p class="eyebrow">
+        At the university
+       </p>
+       <h3>
+        Teaching assistantships
+       </h3>
+       <p>
+        University of British Columbia
+       </p>
+       <div id="teaching-list">
+       </div>
+      </aside>
+     </div>
+    </section>
+    <section class="section" id="education">
+     <div class="section-heading">
+      <div>
+       <p class="eyebrow">
+        03 / Education
+       </p>
+       <h2>
+        A foundation across disciplines.
+       </h2>
+      </div>
+     </div>
+     <div class="education-grid" id="education-list">
+     </div>
+     <details class="awards">
+      <summary>
+       Awards &amp; recognition
+       <span>
+        Academic excellence &amp; athletics
+       </span>
+      </summary>
+      <div id="award-list">
+      </div>
+     </details>
+    </section>
+    <section class="section" id="courses">
+     <div class="section-heading">
+      <div>
+       <p class="eyebrow">
+        04 / Applied learning
+       </p>
+       <h2>
+        Courses &amp; projects
+       </h2>
+      </div>
+      <p>
+       From a first prototype
+       <br/>
+       to a deeper understanding.
+      </p>
+     </div>
+     <p class="section-intro">
+      Engineering, earth science, and software — with projects, reports, and study materials collected alongside the courses that inspired them.
+     </p>
+     <div class="toolbar">
+      <div aria-label="Filter courses" class="filters" role="group">
+       <button aria-pressed="true" data-filter="projects" type="button">
+        With projects
+       </button>
+       <button aria-pressed="false" data-filter="resources" type="button">
+        With resources
+       </button>
+       <button aria-pressed="false" data-filter="all" type="button">
+        All courses
+       </button>
+      </div>
+      <label class="search">
+       <span class="sr-only">
+        Search courses and projects
+       </span>
+       <input id="course-search" placeholder="Search courses &amp; projects…" type="search"/>
+      </label>
+     </div>
+     <p aria-live="polite" class="result-count" id="course-count">
+     </p>
+     <div class="course-grid" id="course-list">
+     </div>
+    </section>
+    <section class="section" id="resources">
+     <div class="section-heading">
+      <div>
+       <p class="eyebrow">
+        05 / Shared knowledge
+       </p>
+       <h2>
+        Educational resources
+       </h2>
+      </div>
+      <a class="text-link" href="https://github.com/TWilson05/Formula_Sheets" rel="noopener noreferrer" target="_blank">
+       LaTeX source on GitHub ↗
+      </a>
+     </div>
+     <p class="section-intro">
+      Notes, formula sheets, and study guides I created and shared throughout university. Some have supported over 1,000 students; others have been adopted by professors for exams.
+     </p>
+     <label class="search resource-search">
+      <span class="sr-only">
+       Search educational resources
+      </span>
+      <input id="resource-search" placeholder="Find a course, topic, or resource…" type="search"/>
+     </label>
+     <p aria-live="polite" class="result-count" id="resource-count">
+     </p>
+     <div class="resource-grid" id="resource-list">
+     </div>
+    </section>
+   </div>
+  </main>
+  <footer>
+   <div class="container footer-content">
+    <div>
+     <p class="eyebrow">
+      Let’s connect
+     </p>
+     <h2>
+      Good science starts with a conversation.
+     </h2>
+     <a class="footer-email" href="mailto:tb.wilson05@gmail.com">
+      Say hello
+      <span aria-hidden="true">
+       ↗
+      </span>
+     </a>
     </div>
-
-    <!-- Modal Layout -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeProject()">&times;</button>
-            <div id="projectDetails"></div>
-        </div>
+    <div class="footer-note">
+     <p>
+      Tyler Wilson
+     </p>
+     <p>
+      Geophysics · UBC
+     </p>
+     <a href="#home">
+      Back to top ↑
+     </a>
     </div>
-
-    <script>
-        const projects = {
-            1: {
-                title: "Streamflow Prediction in BC Using Deep Learning",
-                date: "October 2024 - December 2024",
-                summary: "Developed a deep learning model to forecast daily streamflow values at gauge stations across British Columbia using remote sensing weather data.",
-                technologies: ["TensorFlow", "Python", "Pandas", "NumPy", "Matplotlib"],
-                bullets: [
-                    "Trained an LSTM-CNN model to forecast predictions of the next day's streamflow value at gauge stations across BC using remote sensing weather data."
-                ],
-                contributors: ["Tyler Wilson", "Gage Paskiewich"],
-                githubUrl: "https://github.com/TWilson05/EOSC-410-Final-Project",
-                slidesUrl: "content/projects/EOSC_Final_Project_Presentation_Slides.pdf"
-            },
-            2: {
-                title: "Geophysical Electromagnetic Detector",
-                date: "September 2024 - April 2025",
-                summary: "Frequency domain electromagnetic method survey device for unexploded ordinates (UXO) detection.",
-                technologies: ["Python", "NumPy", "MATLAB", "Geophysics", "Signal Processing"],
-                bullets: [
-                    "Created a frequency domain electromagnetic method survey device for unexploded ordinates (UXO) detection.",
-                    "Developed and tested a three-coil architecture to isolate induced secondary magnetic fields using physical cancellation.",
-                    "Implemented geophysical inversion algorithms to reconstruct subsurface conductivity profiles in real-time.",
-                    "Built a forward simulation pipeline to model eddy current responses from uniaxial targets; approximated UXOs as spheroids.",
-                    "Explored the use of diffusion models and Bayesian priors to classify UXOs based on their reconstructed conductivity profiles."
-                ],
-                contributors: ["Tyler Wilson", "Sabrina Ashik", "Joel Tsuchitori", "Matthew Hasman"],
-                githubUrl: "https://github.com/matthewhasman/Geophysical-Electromagnetic-Scanner",
-                reportUrl: "content/projects/2459_GEMS_Final_Report.pdf",
-                slidesUrl: "content/projects/2459_Underground_Imager_Presentation.pdf"
-            },
-            3: {
-                title: "Continuum Tube Robot",
-                date: "September 2023 - April 2024",
-                summary: "Soft continuum tube robot with ML-based control and optimized workspace exploration.",
-                technologies: ["Python", "ML Kinematics", "SolidWorks", "Mechanical Design"],
-                bullets: [
-                    "Developed a novel, compact mechanical design for a soft continuum tube robot with 1% tip resolution.",
-                    "Implemented a kinematic model for the robot using ML to predict its position in space and map position to motor inputs.",
-                    "Created an ML algorithm to select physical tube dimensions to optimize exploration of a simulated workspace."
-                ],
-                contributors: ["Tyler Wilson", "Cindy Zhong", "Joseph Koh", "Mark Long"],
-                githubUrl: "https://github.com/cindyzhxng/2406-continuum-robot",
-                reportUrl: "content/projects/2406_Continuum_Robot_Final_Report.pdf",
-                slidesUrl: "content/projects/2406_Continuum_Robot_Presentation.pdf"
-            },
-            4: {
-                title: "Simulated License Plate Detecting Robot",
-                date: "September 2022 - December 2022",
-                summary: "Self-driving car for autonomous navigation and character identification in a ROS Gazebo environment.",
-                technologies: ["ROS", "TensorFlow", "OpenCV", "PID", "SIFT", "Reinforcement Learning"],
-                bullets: [
-                    "Developed a self-driving car to navigate a parking lot setting in a ROS Gazebo environment, reading license plates on parked cars and avoiding pedestrians and other vehicles, placing 3rd in competition.",
-                    "Trained a CNN using TensorFlow to identify license plate characters with over 95% accuracy.",
-                    "Utilized SIFT and the OpenCV library to identify and extract license plates from the simulation video feed.",
-                    "Used OpenCV tools to program a state machine PID algorithm used to navigate the environment and avoid obstacles.",
-                    "Developed a reinforcement learning algorithm to train a robot to line follow in a ROS Gazebo environment."
-                ],
-                contributors: ["Tyler Wilson", "Peter Goubarev"],
-                githubUrl: "https://github.com/Enph353-Team-20/controller_pkg",
-                reportUrl: "content/projects/ENPH_353_Final_Report.pdf",
-                videoUrl: "https://youtu.be/k3zzYlgzKM8"
-            },
-            5: {
-                title: "Autonomous Treasure-Finding Robot",
-                date: "May 2022 - August 2022",
-                summary: "Fully-autonomous treasure collection robot utilizing sensor fusion and high-precision control.",
-                technologies: ["C++", "ARM", "Circuit Design", "CAD", "Optocouplers"],
-                bullets: [
-                    "Created a fully-autonomous robot to collect treasures, navigating a course using reflectance sensors, IR, and encoders.",
-                    "Designed and built chassis and mechanical arms using CAD and laser-cut parts, integrating motors and sensors for control.",
-                    "Programmed an ARM based chip in C++ to control mechanical arms using servo-motors and ultrasonic sensors.",
-                    "Designed optocoupler circuit to eliminate crosstalk between motors and control chip."
-                ],
-                contributors: ["Tyler Wilson", "Spencer Bradbury", "Ethan Predinchuk", "Liza Belskiy"],
-                githubUrl: "https://github.com/spencerbradbury/enph253",
-                videoUrl: "https://youtu.be/6RmUjTOywKo"
-            },
-            6: {
-                title: "WikiMediator Server",
-                date: "November 2021 - December 2021",
-                summary: "Multithreaded program for Wikipedia API integration and graph algorithms.",
-                technologies: ["Java", "Wikipedia API", "Multithreading", "Algorithms"],
-                bullets: [
-                    "Designed multithreaded program using Wikipedia API to create an interactive server for performing operations on wiki pages.",
-                    "Created algorithm to find shortest path between Wikipedia pages."
-                ],
-                contributors: ["Tyler Wilson", "Ethan Predinchuk", "Chris Griffiths"]
-            },
-            7: {
-                title: "Email Interaction Analyzer",
-                date: "November 2021",
-                summary: "Graph theory based program for analyzing database metrics from massive interaction logs.",
-                technologies: ["Java", "Graph Theory", "JUnit", "Multithreading"],
-                bullets: [
-                    "Developed a program in Java to analyze and return metrics from a database of email interactions using graph theory.",
-                    "Constructed test cases for each method using JUnit, achieving 96% line coverage with a focus on testing edge cases.",
-                    "Developed an algorithm to determine the most connected user in a given time window, time-optimized using multithreading."
-                ],
-                contributors: ["Tyler Wilson", "Ethan Predinchuk", "Chris Griffiths"]
-            },
-            8: {
-                title: "Text Document Analyzer",
-                date: "October 2021",
-                summary: "NLP tool for document metric extraction and similarity grouping.",
-                technologies: ["Java", "Google AI", "DFT", "Signal Processing"],
-                bullets: [
-                    "Designed a program for reading documents from a file or URL and returning sentence and word-level metrics.",
-                    "Used Google’s Natural Language AI for document-level sentiment analysis.",
-                    "Grouped documents by similarity using Jensen-Shannon Divergence.",
-                    "Encrypted and decrypted documents using Discrete Fourier Transform."
-                ],
-                contributors: ["Tyler Wilson", "Ethan Predinchuk", "Chris Griffiths"]
-            },
-            9: {
-                title: "Herring Spawn Classification via Satellite Imagery",
-                date: "January 2025 - April 2025",
-                summary: "Investigating remote sensing methodologies to monitor Pacific Herring spawning events using multi-spectral Sentinel-2 data.",
-                technologies: ["Remote Sensing", "Sentinel-2", "Supervised Learning", "Maximum Likelihood", "GIS"],
-                bullets: [
-                    "Developed a methodology to quantify herring spawn populations by detecting characteristic milky turquoise ocean color changes in satellite data.",
-                    "Compared the performance of supervised classification and time-based anomaly detection using Sentinel-2 high-resolution imagery.",
-                    "Demonstrated that time-based anomaly methods provide more consistent accuracy for identifying milt density compared to traditional single-image approaches.",
-                    "Validated the efficacy of time-based anomalies for monitoring long-term ecosystem health and spawning patterns in the BC coastal region."
-                ],
-                contributors: ["Tyler Wilson", "Sujin Jung", "Carly Dargatz", "Vivian Lin", "Amanda Quail"],
-                reportUrl: "content/projects/GEOS373_Final_Poster.pdf"
-            },
-            10: {
-                title: "Potential Campsite Locations on Vancouver Island",
-                date: "December 2024",
-                summary: "Systematically identifying optimal sites for new campgrounds on Vancouver Island using multi-criteria GIS analysis.",
-                technologies: ["ArcGIS Pro", "QGIS", "Spatial Analysis", "MCDA", "Python"],
-                bullets: [
-                    "Analyzed multiple datasets (elevation, trails, freshwater, fire risk) to create a suitability filter for campground development.",
-                    "Implemented a multi-criteria decision analysis (MCDA) framework considering government guidelines and group-defined safety thresholds.",
-                    "Utilized digital elevation models (DEM) to assess slope suitability (2-10%) and eliminate low-lying coastal flood zones.",
-                    "Applied spatial buffers to exclude areas near paved roads (3km), existing campsites (2km), and recent wildfire perimeters (10-year recovery).",
-                    "Integrated freshwater access (rivers/lakes) with strict 20m setbacks to minimize environmental impact and flood risk."
-                ],
-                contributors: ["Tyler Wilson", "Rosie Barlow", "Ira Giligson", "Sum Leung", "Tyger Paul", "Naomi Prohaska"],
-                reportUrl: "content/projects/GEOS_270_Final_Report.pdf",
-                storyMapUrl: "https://storymaps.arcgis.com/stories/c35e3af823484cb492c231d0241d6b45"
-            }
-        };
-
-        function openProject(id) {
-            const p = projects[id];
-            const modal = document.getElementById('projectModal');
-            const detailsDiv = document.getElementById('projectDetails');
-            
-            let techHTML = (p.technologies || []).map(t => `<span class="tech-tag" style="background:#3498db; color:#fff; padding:0.3rem 0.6rem; border-radius:3px; font-size:0.8rem; margin-right:5px; display:inline-block; margin-bottom:5px;">${t}</span>`).join('');
-            let bulletsHTML = (p.bullets || []).map(b => `<li>${b}</li>`).join('');
-            
-            let linksHTML = '<div class="project-links">';
-            if (p.githubUrl) linksHTML += `<a href="${p.githubUrl}" target="_blank" class="project-link-btn github">📁 GitHub</a>`;
-            if (p.storyMapUrl) linksHTML += `<a href="${p.storyMapUrl}" target="_blank" class="project-link-btn storymap">🗺️ View StoryMap</a>`;
-            if (p.reportUrl) linksHTML += `<a href="${p.reportUrl}" target="_blank" class="project-link-btn report">📄 Report/Poster PDF</a>`;
-            if (p.slidesUrl) linksHTML += `<a href="${p.slidesUrl}" target="_blank" class="project-link-btn slides">📊 Slides PDF</a>`;
-            if (p.videoUrl) linksHTML += `<a href="${p.videoUrl}" target="_blank" class="project-link-btn video">📺 Watch Video</a>`;
-            linksHTML += '</div>';
-
-            let contributorsHTML = (p.contributors && p.contributors.length > 0) ? `
-                <div class="contributors">
-                    <h4>Collaborators</h4>
-                    <div class="contributors-list">
-                        ${p.contributors.map(c => `<span class="contributor-tag">${c}</span>`).join('')}
-                    </div>
-                </div>
-            ` : '';
-
-            let videoHTML = '';
-            if (p.videoUrl) {
-                let vId = p.videoUrl.includes('v=') ? p.videoUrl.split('v=')[1].split('&')[0] : p.videoUrl.split('/').pop();
-                videoHTML = `<div class="project-section"><h3>Demonstration</h3><div class="video-container"><iframe src="https://www.youtube.com/embed/${vId}" allowfullscreen></iframe></div></div>`;
-            }
-
-            detailsDiv.innerHTML = `
-                <h2 style="color: #2c3e50; margin-bottom:0.5rem;">${p.title}</h2>
-                <p><em>${p.date}</em></p>
-                ${linksHTML}
-                ${contributorsHTML}
-                <div class="project-section"><h3>Key Technical Work</h3><ul>${bulletsHTML}</ul></div>
-                <div class="project-section"><h3>Technologies</h3><div class="tech-tags">${techHTML}</div></div>
-                ${videoHTML}
-            `;
-            modal.classList.add('active');
-        }
-
-        function openAward(year, title, description) {
-            const modal = document.getElementById('projectModal');
-            const detailsDiv = document.getElementById('projectDetails');
-            detailsDiv.innerHTML = `
-                <div style="text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 1rem; margin-bottom: 1.5rem;">
-                    <h2 style="color: #2c3e50;">${title}</h2>
-                    <p style="color: #3498db; font-weight: bold;">${year}</p>
-                </div>
-                <div class="project-section">
-                    <p style="font-size: 1.1rem; color: #444; line-height: 1.8;">${description}</p>
-                </div>
-            `;
-            modal.classList.add('active');
-        }
-
-        function closeProject() { document.getElementById('projectModal').classList.remove('active'); }
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pageName = this.getAttribute('data-page');
-                document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-                document.getElementById(pageName).classList.add('active');
-                window.scrollTo(0, 0);
-            });
-        });
-        document.getElementById('projectModal').addEventListener('click', function(e) { if (e.target === this) closeProject(); });
-    </script>
-</body>
+   </div>
+  </footer>
+  <dialog aria-labelledby="dialog-title" id="project-dialog">
+   <button aria-label="Close project details" class="dialog-close" type="button">
+    ×
+   </button>
+   <div id="project-details">
+   </div>
+  </dialog>
+  <noscript>
+   <p class="container">
+    Please enable JavaScript to view the portfolio content. You can also
+    <a href="TylerWilsonResume.pdf">
+     read my résumé
+    </a>
+    or
+    <a href="mailto:tb.wilson05@gmail.com">
+     contact me by email
+    </a>
+    .
+   </p>
+  </noscript>
+ </body>
 </html>
