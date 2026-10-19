@@ -30,10 +30,45 @@ $('award-list').innerHTML = data.awards.map(a => `<details class="award"><summar
 const courseProjects = code => data.projects.filter(p => p.course === code);
 const courseResources = code => data.resources.filter(r => r.courses.includes(code));
 const slug = code => `course-${code.toLowerCase().replace(/\s+/g,'-')}`;
-const artwork = code => {
-  const theme = code.startsWith('GEOS') || code==='EOSC 410' ? 'water' : code==='CPEN 221' ? 'code' : 'robot';
-  const paths = theme==='water' ? '<path d="M-20 80Q50 0 120 60T260 55T380 50M-20 95Q50 15 120 75T260 70T380 65M-20 110Q50 30 120 90T260 85T380 80M-20 125Q50 45 120 105T260 100T380 95M-20 65Q50-15 120 45T260 40T380 35M-20 50Q50-30 120 30T260 25T380 20"/>' : theme==='robot' ? '<circle cx="160" cy="60" r="38"/><circle cx="160" cy="60" r="25"/><path d="M40 60h80m80 0h80M160 0v22m0 76v22M50 20l65 25m90 30 65 25M70 100l50-25m80-30 50-25"/><circle cx="160" cy="60" r="6"/><circle cx="45" cy="60" r="5"/><circle cx="275" cy="60" r="5"/>' : '<path d="m110 32-30 28 30 28m100-56 30 28-30 28m-37-67-26 78M20 25h25m-25 15h40m215 40h25m-40 15h40"/>';
-  return `<div class="course-art" data-theme="${theme}" aria-hidden="true"><svg viewBox="0 0 320 120" fill="none" stroke="currentColor" stroke-width="1">${paths}</svg><span class="art-label">${theme==='water'?'Earth & environment':theme==='robot'?'Engineering & design':'Software & systems'}</span></div>`;
+const disciplineFor = code => {
+  if (!code) return {theme:'research', label:'Independent work'};
+  if (/GEOS|EOSC|FRST/.test(code)) return {theme:'earth', label:'Earth & environment'};
+  if (/CPEN|ELEC|INFR/.test(code)) return {theme:'systems', label:'Software & systems'};
+  if (/ENPH|MECH|CIVL|APSC/.test(code)) return {theme:'design', label:'Engineering & design'};
+  if (/MATH/.test(code)) return {theme:'math', label:'Mathematics & modelling'};
+  if (/PHYS/.test(code)) return {theme:'physics', label:'Physics & measurement'};
+  return {theme:'research', label:'Science & research'};
+};
+const visualPaths = theme => ({
+  earth:'<path d="M-20 80Q50 0 120 60T260 55T380 50M-20 95Q50 15 120 75T260 70T380 65M-20 110Q50 30 120 90T260 85T380 80M-20 125Q50 45 120 105T260 100T380 95"/>',
+  design:'<circle cx="160" cy="60" r="38"/><circle cx="160" cy="60" r="25"/><path d="M40 60h80m80 0h80M160 0v22m0 76v22M50 20l65 25m90 30 65 25M70 100l50-25m80-30 50-25"/>',
+  systems:'<path d="m110 32-30 28 30 28m100-56 30 28-30 28m-37-67-26 78M20 25h25m-25 15h40m215 40h25m-40 15h40"/>',
+  math:'<path d="M25 95Q80 5 135 95T245 95M35 35h60M195 35h90"/><circle cx="135" cy="95" r="4"/>',
+  physics:'<ellipse cx="160" cy="60" rx="110" ry="30"/><ellipse cx="160" cy="60" rx="40" ry="110"/><circle cx="160" cy="60" r="7"/>',
+  research:'<circle cx="160" cy="60" r="35"/><path d="M160 25v70M125 60h70M55 25h35m-35 15h55m160 25h35m-50 15h50"/>'
+}[theme]);
+const artwork = (code, kind='course') => {
+  const {theme,label} = disciplineFor(code);
+  return `<div class="course-art ${kind==='project'?'project-art':''}" data-theme="${theme}" aria-hidden="true"><svg viewBox="0 0 320 120" fill="none" stroke="currentColor" stroke-width="1">${visualPaths(theme)}</svg>${kind==='project'?'':`<span class="art-label">${label}</span>`}</div>`;
+};
+const photoPrompt = title => ({
+  'Geophysical Electromagnetic Detector':'Add a field photo of the scanner or a coil close-up.',
+  'Herring Spawn Classification via Satellite Imagery':'Add a satellite image or annotated coastline map.',
+  'Potential Campsite Locations on Vancouver Island':'Add a map excerpt or a campsite landscape photo.',
+  'Streamflow Prediction in BC Using Deep Learning':'Add a streamflow chart, gauge photo, or watershed image.',
+  'Continuum Tube Robot':'Add a prototype photo or workspace diagram.',
+  'Simulated License Plate Detecting Robot':'Add a robot-in-simulation screenshot or competition photo.',
+  'Autonomous Treasure-Finding Robot':'Add a robot prototype or course photo.'
+}[title] || 'Add a representative project image, diagram, or screenshot.');
+const projectCard = (p,index,featured=false) => {
+  const discipline = disciplineFor(p.course);
+  const visual = p.image ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.imageAlt || p.title)}" loading="lazy">` : artwork(p.course || '', 'project');
+  return `<article class="project-feature ${featured?'is-featured':''}"><div class="project-visual">${visual}<span class="project-discipline">${discipline.label}</span></div><div class="project-feature-body"><p class="project-course">${p.course ? escapeHTML(p.course) : 'Independent project'}</p><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.summary)}</p><div class="project-feature-meta"><span>${escapeHTML((p.technologies || []).slice(0,3).join(' · '))}</span><button type="button" class="project-button" data-project="${index}">View project <span aria-hidden="true">↗</span></button></div>${!p.image?`<p class="photo-prompt"><strong>Suggested visual:</strong> ${escapeHTML(photoPrompt(p.title))}</p>`:''}</div></article>`;
+};
+const renderProjectShowcase = () => {
+  const query = $('course-search').value.trim().toLowerCase();
+  const projects = data.projects.map((p,index)=>({p,index})).filter(({p})=>[p.title,p.summary,p.course || '',...(p.technologies||[])].join(' ').toLowerCase().includes(query));
+  $('project-showcase').innerHTML = projects.map(({p,index},i)=>projectCard(p,index,i<3)).join('') || '<p class="empty">No projects match this search.</p>';
 };
 let courseFilter = 'projects';
 function renderCourses(){
@@ -45,8 +80,10 @@ function renderCourses(){
   $('course-count').textContent = `${courses.length} ${courses.length===1?'course':'courses'} · ${courseFilter==='all'?'Full course history':courseFilter==='projects'?'Projects from coursework':'Notes & study materials'}`;
   $('course-list').innerHTML = courses.map(c=>{
     const projects=courseProjects(c.code), resources=courseResources(c.code);
-    return `<article id="${slug(c.code)}" class="course-card">${c.image?`<img class="course-image" src="${escapeHTML(c.image)}" alt="${escapeHTML(c.imageAlt || c.title)}" loading="lazy">`:projects.length?artwork(c.code):''}<div class="course-body"><span class="course-code">${escapeHTML(c.code)}</span><p class="date">${escapeHTML(c.year)}</p><h3>${escapeHTML(c.title)}</h3><p>${escapeHTML(c.description)}</p>${projects.map(p=>`<button type="button" class="project-button" data-project="${data.projects.indexOf(p)}"><span>${escapeHTML(p.title)}</span><span aria-hidden="true">↗</span></button>`).join('')}${resources.length?`<details class="course-resources"><summary>${resources.length} study ${resources.length===1?'resource':'resources'}</summary>${resources.map(r=>link(r.url,r.title)).join('')}</details>`:''}</div></article>`;
+    const discipline = disciplineFor(c.code);
+    return `<article id="${slug(c.code)}" class="course-card">${c.image?`<img class="course-image" src="${escapeHTML(c.image)}" alt="${escapeHTML(c.imageAlt || c.title)}" loading="lazy">`:artwork(c.code)}<div class="course-body"><span class="course-code">${escapeHTML(c.code)}</span><p class="date">${escapeHTML(c.year)}</p><h3>${escapeHTML(c.title)}</h3><p>${escapeHTML(c.description)}</p>${projects.map(p=>`<button type="button" class="project-button" data-project="${data.projects.indexOf(p)}"><span>${escapeHTML(p.title)}</span><span aria-hidden="true">↗</span></button>`).join('')}${resources.length?`<details class="course-resources"><summary>${resources.length} study ${resources.length===1?'resource':'resources'}</summary>${resources.map(r=>link(r.url,r.title)).join('')}</details>`:''}</div></article>`;
   }).join('') || '<p class="empty">No courses match. Try another search or select All courses.</p>';
+  renderProjectShowcase();
 }
 function renderResources(){
   const query=$('resource-search').value.trim().toLowerCase();
@@ -58,7 +95,7 @@ const dialog=$('project-dialog');
 function openProject(index){
   const p=data.projects[index];
   const labels={githubUrl:'GitHub',reportUrl:'Report / poster',slidesUrl:'Presentation slides',videoUrl:'Watch demonstration',storyMapUrl:'Explore StoryMap'};
-  $('project-details').innerHTML=`<p class="eyebrow">${escapeHTML(p.course)} / Course project</p><h2 id="dialog-title">${escapeHTML(p.title)}</h2><p class="date">${escapeHTML(p.date)}</p><p>${escapeHTML(p.summary)}</p><div class="links">${Object.entries(labels).filter(([key])=>p[key]).map(([key,label])=>link(p[key],label)).join('')}</div><h3>Technical work</h3><ul>${p.bullets.map(b=>`<li>${escapeHTML(b)}</li>`).join('')}</ul><h3>Tools & methods</h3><div class="tags">${p.technologies.map(t=>`<span>${escapeHTML(t)}</span>`).join('')}</div><h3>Collaborators</h3><p>${escapeHTML(p.contributors.join(' · '))}</p>`;
+  $('project-details').innerHTML=`<p class="eyebrow">${p.course ? escapeHTML(p.course)+' / Course project' : 'Independent project'}</p><h2 id="dialog-title">${escapeHTML(p.title)}</h2><p class="date">${escapeHTML(p.date)}</p><p>${escapeHTML(p.summary)}</p><div class="links">${Object.entries(labels).filter(([key])=>p[key]).map(([key,label])=>link(p[key],label)).join('')}</div><h3>Technical work</h3><ul>${p.bullets.map(b=>`<li>${escapeHTML(b)}</li>`).join('')}</ul><h3>Tools & methods</h3><div class="tags">${(p.technologies||[]).map(t=>`<span>${escapeHTML(t)}</span>`).join('')}</div><h3>Collaborators</h3><p>${escapeHTML((p.contributors||[]).join(' · ') || 'Tyler Wilson')}</p>`;
   dialog.showModal();
 }
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
@@ -69,6 +106,7 @@ document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListen
 $('course-search').addEventListener('input',renderCourses);
 $('resource-search').addEventListener('input',renderResources);
 $('course-list').addEventListener('click',e=>{const button=e.target.closest('[data-project]');if(button)openProject(Number(button.dataset.project));});
+$('project-showcase').addEventListener('click',e=>{const button=e.target.closest('[data-project]');if(button)openProject(Number(button.dataset.project));});
 document.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
 // Explicit handling also supports embedded browsers that suppress native dialog Escape behavior.
 dialog.addEventListener('keydown',event=>{
