@@ -52,7 +52,7 @@ After editing, refresh the browser, check the relevant course/resource search, a
 
 ## Athletics page
 
-[athletics.html](./athletics.html) is a separate page; the academic portfolio remains one scrolling page. It shares [styles.css](./styles.css) and adds page-specific styling in [athletics.css](./athletics.css). Edit **[athletics-content.js](./athletics-content.js)** for races, historical PBs, and the athletics banner. No build step or server is required.
+[athletics.html](./athletics.html) is a separate page; the academic portfolio remains one scrolling page. It shares [styles.css](./styles.css) and adds page-specific styling in [athletics.css](./athletics.css). Edit **[athletics-content.js](./athletics-content.js)** for races and the athletics banner. No build step or server is required.
 
 ### Add a race
 
@@ -79,7 +79,7 @@ Copy an entry in `races`. This example shows the available fields (replace the e
 
 Upload result files anywhere under `content` and use the matching relative path; the example path above is not a supplied file. Omit `resultsUrl` if no result document is available. If place is missing but a results link is present, the Place cell displays “Results”. Notes are entered manually and are not claims inferred from time comparisons. Record points are entered manually too, never calculated.
 
-Times accept seconds, `mm:ss.ss`, or `hh:mm:ss.ss`. Track times display with hours, minutes, seconds, and two decimal places (`00:12:45.32`); road/XC display whole seconds without leading zero units (`12:45` or `1:31:57`). DQ/DNF/NT stay as text, never count as bests, and sort after timed results in the event view. Missing points sort last in points view. Unknown values remain dashes, not zeroes.
+Times accept seconds, `mm:ss.ss`, or `hh:mm:ss.ss`. Track times retain two decimal places but omit leading zero units (`12:45.32` or `1:30:56.74`); road/XC display whole seconds without leading zero units (`12:45` or `1:31:57`). DQ/DNF/NT stay as text, never count as bests, and sort after timed results in the event view. Missing points sort last in points view. Unknown values remain dashes, not zeroes.
 
 ### Filters and best performances
 
@@ -87,11 +87,9 @@ Times accept seconds, `mm:ss.ss`, or `hh:mm:ss.ss`. Track times display with hou
 - Selecting an event automatically switches to fastest-first sorting. You can still sort the selected event by points or date. Reset restores all years/events and recent-first order.
 - `distanceMeters` and `gait` define an event group: a 5km road run and a 5000m track run both use `5000` and `run`; 5kmRW uses `5000` and `walk`. `event` is only the displayed name.
 - Odd-distance XC appears in the unfiltered history and points view but does not create an event dropdown option or PB/SB. Standard-distance XC, such as 5km, joins its matching event. The standard-distance list is in [athletics.js](./athletics.js).
-- A season means a calendar year. The fastest eligible saved race in each year/event is bold, including ties. Filtering or sorting does not change the year's best. This is based on the saved archive, which may be incomplete.
+- A season means a calendar year. The fastest eligible saved race in each year/event is bold, including ties. Filtering or sorting does not change the year's best.
 - Set `bestEligible: false` for wind-assisted, downhill, short-course, or other performances you do not want counted as PB/SB. These results remain visible and still sort by their recorded times. A condition note alone does not change eligibility.
-- `personalBests` holds historical bests independently of the race archive, so you do not need to enter every old race first. Its entries use the same event, time, date, and location fields. The cards take the fastest eligible performance from both `personalBests` and `races`, so a new faster result updates the card automatically. Track/road/XC equivalents are grouped here too.
-
-The starting archive contains the five 2026 results on [Tyler's World Athletics profile](https://worldathletics.org/athletes/canada/tyler-wilson-14899643), checked on 19 October 2026. Historical PBs are also from that profile. In particular, Brasilia lists **NT, place 72, with no score**; its points are deliberately `null`. Update `profile.archiveIntro` as you expand the archive.
+- Personal-best cards are calculated directly from `races`. Add or update a result once, and the corresponding PB card updates automatically. Track/road/XC equivalents are grouped here too.
 
 ### Athletics banner
 

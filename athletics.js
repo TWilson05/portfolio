@@ -18,13 +18,18 @@ const Athletics = (() => {
     if (statuses.has(raw)) return raw;
     const value = timeValue(raw);
     if (value === null) return '—';
-    // Track retains hundredths and full hh:mm:ss.ss; road/XC omit leading zero units.
+    // Track retains hundredths; every surface omits leading zero units.
     const totalSeconds = race.surface === 'track' ? Math.floor(value / 100) : Math.round(value / 100);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor(totalSeconds % 3600 / 60);
     const seconds = totalSeconds % 60;
     const pad = number => String(number).padStart(2, '0');
-    if (race.surface === 'track') return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}.${pad(value % 100)}`;
+    if (race.surface === 'track') {
+      const preciseSeconds = `${pad(seconds)}.${pad(value % 100)}`;
+      if (hours) return `${hours}:${pad(minutes)}:${preciseSeconds}`;
+      if (minutes) return `${minutes}:${preciseSeconds}`;
+      return `${seconds}.${pad(value % 100)}`;
+    }
     if (hours) return `${hours}:${pad(minutes)}:${pad(seconds)}`;
     if (minutes) return `${minutes}:${pad(seconds)}`;
     return String(seconds);
@@ -87,7 +92,7 @@ const Athletics = (() => {
   $('athletics-banner').alt = content.profile.bannerAlt || '';
   $('athlete-profile').href = content.profile.worldAthletics;
 
-  const pbs = [...Athletics.bestMap([...(content.personalBests || []), ...content.races]).values()]
+  const pbs = [...Athletics.bestMap(content.races).values()]
     .sort((a, b) => (a.gait || 'run').localeCompare(b.gait || 'run') || a.distanceMeters - b.distanceMeters);
   $('pb-list').innerHTML = pbs.map(race => `<article class="pb-card"><p class="eyebrow">${escape(Athletics.eventLabel(race))}</p><h3>${escape(Athletics.formatPerformance(race))}</h3><p class="pb-event">${escape(race.event)} · ${escape(surfaceLabel[race.surface])}</p><p>${dateMarkup(race.date)}</p><p class="pb-location">${escape(race.location)}</p><div class="pb-notes">${noteTags(race)}</div></article>`).join('') || '<p>No personal bests recorded yet.</p>';
 
