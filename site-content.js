@@ -348,30 +348,6 @@ window.SITE_CONTENT = {
   ],
   "projects": [
     {
-      "title": "Streamflow Prediction in BC Using Deep Learning",
-      "date": "October 2024 - December 2024",
-      "summary": "Developed a deep learning model to forecast daily streamflow values at gauge stations across British Columbia using remote sensing weather data.",
-      "technologies": [
-        "TensorFlow",
-        "Python",
-        "Pandas",
-        "NumPy",
-        "Matplotlib"
-      ],
-      "bullets": [
-        "Trained an LSTM-CNN model to forecast predictions of the next day's streamflow value at gauge stations across BC using remote sensing weather data."
-      ],
-      "contributors": [
-        "Tyler Wilson",
-        "Gage Paskiewich"
-      ],
-      "githubUrl": "https://github.com/TWilson05/EOSC-410-Final-Project",
-      "slidesUrl": "content/projects/EOSC_Final_Project_Presentation_Slides.pdf",
-      "course": "EOSC 410",
-      "image": "content/photos/projects/EOSC410.png",
-      "highlight": true
-    },
-    {
       "title": "Geophysical Electromagnetic Detector",
       "date": "September 2024 - April 2025",
       "summary": "Frequency domain electromagnetic method survey device for unexploded ordnance (UXO) detection.",
@@ -401,6 +377,30 @@ window.SITE_CONTENT = {
       "course": "ENPH 479",
       "image": "content/photos/projects/GEMs_capstone.png",
       "highlight": true,
+    },
+    {
+      "title": "Streamflow Prediction in BC Using Deep Learning",
+      "date": "October 2024 - December 2024",
+      "summary": "Developed a deep learning model to forecast daily streamflow values at gauge stations across British Columbia using remote sensing weather data.",
+      "technologies": [
+        "TensorFlow",
+        "Python",
+        "Pandas",
+        "NumPy",
+        "Matplotlib"
+      ],
+      "bullets": [
+        "Trained an LSTM-CNN model to forecast predictions of the next day's streamflow value at gauge stations across BC using remote sensing weather data."
+      ],
+      "contributors": [
+        "Tyler Wilson",
+        "Gage Paskiewich"
+      ],
+      "githubUrl": "https://github.com/TWilson05/EOSC-410-Final-Project",
+      "slidesUrl": "content/projects/EOSC_Final_Project_Presentation_Slides.pdf",
+      "course": "EOSC 410",
+      "image": "content/photos/projects/EOSC410.png",
+      "highlight": true
     },
     {
       "title": "Continuum Tube Robot",
@@ -486,6 +486,7 @@ window.SITE_CONTENT = {
       "githubUrl": "https://github.com/spencerbradbury/enph253",
       "videoUrl": "https://youtu.be/6RmUjTOywKo",
       "course": "ENPH 253",
+      "image": "content/photos/projects/robot_summer_photo.jpg",
       "highlight": true
     },
     {
@@ -580,6 +581,7 @@ window.SITE_CONTENT = {
       ],
       "reportUrl": "content/projects/GEOS373_Final_Poster.pdf",
       "course": "GEOS 373",
+      "image": "content/photos/projects/herring_spawn.png",
       "highlight": true
     },
     {
@@ -610,7 +612,8 @@ window.SITE_CONTENT = {
       ],
       "reportUrl": "content/projects/GEOS_270_Final_Report.pdf",
       "storyMapUrl": "https://storymaps.arcgis.com/stories/c35e3af823484cb492c231d0241d6b45",
-      "course": "GEOS 270"
+      "course": "GEOS 270",
+      "image": "content/photos/projects/campsites_project.png"
     }
   ],
   "courses": [
@@ -655,13 +658,15 @@ window.SITE_CONTENT = {
       "code": "GEOS 270",
       "title": "Geographic Information Science",
       "description": "Theory and application of GIS for geoscientific mapping.",
-      "year": "2024/25 - Year 5"
+      "year": "2024/25 - Year 5",
+      "image": "content/photos/projects/campsites_project.png"
     },
     {
       "code": "EOSC 410",
       "title": "Geoscientific Data Analysis and Empirical Modelling",
       "description": "Machine learning and data-driven modeling for earth science datasets.",
-      "year": "2024/25 - Year 5"
+      "year": "2024/25 - Year 5",
+      "image": "content/photos/projects/EOSC410.png"
     },
     {
       "code": "ENPH 352",
@@ -691,7 +696,8 @@ window.SITE_CONTENT = {
       "code": "GEOS 373",
       "title": "Introductory Remote Sensing",
       "description": "Satellite-based image analysis and remote sensing theory.",
-      "year": "2024/25 - Year 5"
+      "year": "2024/25 - Year 5",
+      "image": "content/photos/projects/herring_spawn.png"
     },
     {
       "code": "ELEC 302",
@@ -703,7 +709,8 @@ window.SITE_CONTENT = {
       "code": "ENPH 459",
       "title": "Engineering Physics Project II",
       "description": "Major design project focused on soft robotics and instrumentation.",
-      "year": "2023/24 - Year 4"
+      "year": "2023/24 - Year 4",
+      "image": "content/photos/projects/Continuum_robot_CAD.png"
     },
     {
       "code": "INFR 11130",
@@ -769,7 +776,8 @@ window.SITE_CONTENT = {
       "code": "ENPH 353",
       "title": "Engineering Physics Project I",
       "description": "Project laboratory focused on design iteration and technical prototyping.",
-      "year": "2022/23 - Year 3"
+      "year": "2022/23 - Year 3",
+      "image": "content/photos/projects/ENPH353_sim.png"
     },
     {
       "code": "MECH 360",
@@ -901,7 +909,8 @@ window.SITE_CONTENT = {
       "code": "ENPH 253",
       "title": "Introduction to Instrument Design",
       "description": "Intensive autonomous robotics project lab.",
-      "year": "2021/22 - Year 2"
+      "year": "2021/22 - Year 2",
+      "image": "content/photos/projects/robot_summer_photo.jpg"
     },
     {
       "code": "APSC 100",
