@@ -35,12 +35,14 @@ const Athletics = (() => {
     return String(seconds);
   }
   function eventKey(race) {
+    if (race.groupKey) return race.groupKey;
     const distance = Number(race.distanceMeters);
     if (!Number.isFinite(distance) || distance <= 0) return null;
     if (race.surface === 'xc' && !standardDistances.has(distance)) return null;
     return `${race.gait === 'walk' ? 'walk' : 'run'}:${distance}`;
   }
   function eventLabel(race) {
+    if (race.groupLabel) return race.groupLabel;
     const distance = Number(race.distanceMeters);
     const special = {1609.344: 'Mile', 16093.44: '10 mile', 21097.5: 'Half marathon', 42195: 'Marathon'};
     const label = special[distance] || (distance >= 1000 ? `${distance / 1000}km` : `${distance}m`);
