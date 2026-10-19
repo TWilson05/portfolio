@@ -46,7 +46,8 @@ window.SITE_CONTENT = {
     {
       "title": "Ranked Right Sized Wrong: Ensemble Spread Fails Silently at Streamflow Extremes.",
       "year": "2026",
-      "venue": "Presented at Tackling Climate Change with Machine Learning Workshop at NeurIPS 2026.",
+      "authors": "Gallant, J. & Wilson, T.",
+      "venue": "Presented at the Tackling Climate Change with Machine Learning Workshop at NeurIPS 2026, Sydney, Australia.",
       "type": "Research · Workshop",
       "links": [
         {
@@ -62,7 +63,7 @@ window.SITE_CONTENT = {
     {
       "title": "Student Experience in Self-Learning Mechanics Through OER Development.",
       "year": "2022",
-      "authors": "Wilson, T. & Lapenna, J.",
+      "authors": "Lapenna, J. & Wilson, T.",
       "venue": "Presented at the American Society for Engineering Education (ASEE) Zone IV Conference, Vancouver, Canada.",
       "type": "Education · Conference",
       "links": [
@@ -155,7 +156,7 @@ window.SITE_CONTENT = {
       "institution": "University of British Columbia",
       "degree": "Bachelor of Applied Science in Engineering Physics",
       "date": "2020 - 2025",
-      "description": "Graduated with honors and Wesbrook Scholar distinction; UBC's premier undergraduate award."
+      "description": "Graduated with honors and Wesbrook Scholar distinction; UBC's premier undergraduate award.\nCapstone project: Geophysical electromagnetic sensor for unexploded ordinates detection"
     }
   ],
   "awards": [
@@ -1084,6 +1085,14 @@ window.SITE_CONTENT = {
       "url": "content/educational_resources/Math_217_Notes.pdf"
     },
     {
+      "title": "MATH 255 Notes",
+      "description": "Lecture notes on ordinary differential equations (2021 Fall).",
+      "courses": [
+        "MATH 255"
+      ],
+      "url": "content/educational_resources/Math_255_Notes.pdf"
+    },
+    {
       "title": "MATH 152 Formula Sheet",
       "description": "Final exam formula sheet for linear algebra (2021 Spring).",
       "courses": [
@@ -1125,16 +1134,8 @@ window.SITE_CONTENT = {
       "url": "content/educational_resources/APSC_101_Course_Summary.pdf"
     },
     {
-      "title": "MATH 255 Notes",
-      "description": "Lecture notes on ordinary differential equations.",
-      "courses": [
-        "MATH 255"
-      ],
-      "url": "content/educational_resources/Math_255_Notes.pdf"
-    },
-    {
       "title": "PHYS 158 Course Summary",
-      "description": "Course summary for introductory physics for engineers II.",
+      "description": "Course summary for introductory physics for engineers II (2021 Spring).",
       "courses": [
         "PHYS 158"
       ],
