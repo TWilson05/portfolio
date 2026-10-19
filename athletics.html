@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tyler Wilson’s athletics: personal bests, race walking, and race results across track, road, and cross country.">
+  <meta name="theme-color" content="#183e3b">
+  <title>Tyler Wilson | Athletics</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="athletics.css">
+  <script defer src="athletics-content.js"></script>
+  <script defer src="athletics.js"></script>
+</head>
+<body class="athletics-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="container" aria-label="Main navigation">
+      <a class="wordmark" href="index.html">TW<span>.</span></a>
+      <div class="nav-links">
+        <a href="index.html">Academic portfolio</a>
+        <a href="athletics.html" aria-current="page">Athletics</a>
+        <a href="#personal-bests">Personal bests</a>
+        <a href="#race-history">Race history</a>
+      </div>
+      <a class="nav-contact" href="mailto:tb.wilson05@gmail.com">Get in touch ↗</a>
+    </nav>
+  </header>
+  <main id="main">
+    <header class="hero athletics-hero" id="top">
+      <img class="banner" id="athletics-banner" src="content/photos/athletics-track.svg" alt="" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <div class="container hero-content">
+        <p class="eyebrow">Track / Road / Cross country</p>
+        <h1>Beyond the research.</h1>
+        <p class="athletics-hero-intro" id="athletics-intro"></p>
+        <a class="athlete-profile" id="athlete-profile" target="_blank" rel="noopener noreferrer">World Athletics profile ↗</a>
+      </div>
+    </header>
+    <div class="container">
+      <section class="section" id="personal-bests" aria-labelledby="bests-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / Personal bests</p><h2 id="bests-title">Chasing the next best.</h2></div>
+          <p>Milestones along the way.</p>
+        </div>
+        <div class="pb-grid" id="pb-list"></div>
+        <p class="athletics-fine-print">Best eligible performance at each distance, combining track, road, and standard-distance XC. Running and race walking are kept separate.</p>
+      </section>
+      <section class="section" id="race-history" aria-labelledby="races-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">02 / Race history</p><h2 id="races-title">Every start has a story.</h2></div>
+        </div>
+        <p class="section-intro" id="archive-intro"></p>
+        <form class="race-controls" aria-label="Filter race history" onsubmit="return false">
+          <label>Year<select id="race-year"><option value="all">All years</option></select></label>
+          <label>Event<select id="race-event"><option value="all">All events</option></select></label>
+          <label>Sort by<select id="race-sort"><option value="date">Most recent</option><option value="points">World Athletics points</option><option value="time" disabled>Fastest performance</option></select></label>
+          <button class="reset-races" type="reset">Reset filters</button>
+        </form>
+        <p class="race-legend">Choose an event to sort fastest first. <strong>Bold times</strong> mark the season’s best for that event and calendar year in this archive. DQ, DNF, and NT appear after timed finishes when sorting by performance.</p>
+        <p id="race-count" class="result-count" role="status" aria-live="polite"></p>
+        <div class="race-table-scroll" role="region" aria-label="Race results table; scroll horizontally for all columns" tabindex="0">
+          <table class="race-table">
+            <caption class="sr-only">Race history. Finishing places link to official results when available.</caption>
+            <thead><tr><th scope="col">Date</th><th scope="col">Event</th><th scope="col">Performance</th><th scope="col">Competition</th><th scope="col">Location</th><th scope="col">WA points</th><th scope="col">Place</th><th scope="col">Notes</th></tr></thead>
+            <tbody id="race-rows"></tbody>
+          </table>
+        </div>
+        <p class="athletics-fine-print">WA points are entered from results, not calculated. A dash means no value is recorded. DQ = disqualified; DNF = did not finish; NT = no time. Conditions such as wind or a downhill course appear in parentheses after the performance.</p>
+        <p class="athletics-fine-print">Initial results and personal bests sourced from <a href="https://worldathletics.org/athletes/canada/tyler-wilson-14899643" target="_blank" rel="noopener noreferrer">World Athletics</a>. This is a growing archive, not a complete career history.</p>
+      </section>
+    </div>
+    <noscript><p class="container">Enable JavaScript to view the race archive, or <a href="https://worldathletics.org/athletes/canada/tyler-wilson-14899643">visit my World Athletics profile</a>.</p></noscript>
+  </main>
+  <footer><div class="container footer-content"><div><p class="eyebrow">On and off the track</p><h2>A little further, every day.</h2><a class="footer-email" href="index.html">Explore my academic work ↗</a></div><div class="footer-note"><p>Tyler Wilson</p><p>Researcher. Engineer. Athlete.</p><a href="#top">Back to top ↑</a></div></div></footer>
+</body>
+</html>
