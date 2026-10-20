@@ -44,7 +44,7 @@ window.ATHLETICS_CONTENT = {
       performance: '44:26', performanceNote: '-2.5m/km',
       competition: 'Vancouver Sun Run', location: 'Vancouver, BC',
       points: 107, place: 1755,
-      resultsUrl: '',
+      resultsUrl: 'https://sportstats.one/event/vancouver-sun-run/leaderboard/146265',
       notes: []
     },
     {
@@ -80,7 +80,7 @@ window.ATHLETICS_CONTENT = {
       performance: '44:42', performanceNote: '',
       competition: 'Granville Island Turkey Trot', location: 'Vancouver, BC',
       points: 114, place: 111,
-      resultsUrl: '',
+      resultsUrl: 'https://sportstats.one/event/granville-island-turkey-trot/leaderboard/144482',
       notes: []
     },
     {
@@ -89,7 +89,7 @@ window.ATHLETICS_CONTENT = {
       performance: '1:30:56.74', performanceNote: '',
       competition: 'Canadian Track & Field Championships', location: 'Ottawa, ON',
       points: 966, place: 1,
-      resultsUrl: '',
+      resultsUrl: 'https://live.athletics.ca/meets/54901/events/individual/2115594',
       notes: ['PB']
     },
     {
@@ -98,7 +98,7 @@ window.ATHLETICS_CONTENT = {
       performance: '43:44.96', performanceNote: '',
       competition: 'BC Track & Field Championships', location: 'Coquitlam, BC',
       points: 973, place: 3,
-      resultsUrl: '',
+      resultsUrl: 'https://www.bcathletics.org/admin/js/elfinder/files/BCA%20Logos/Championships/Results%202025%20BC%20Champs.pdf',
       notes: ['PB']
     },
     {
@@ -107,7 +107,7 @@ window.ATHLETICS_CONTENT = {
       performance: '20:49.23', performanceNote: '',
       competition: 'NAIA Track & Field Championships', location: 'Marion, IN',
       points: 983, place: 2,
-      resultsUrl: '',
+      resultsUrl: 'http://live.crossroadstiming.com/meets/691629/events/21/results/F/M',
       notes: []
     },
     {
@@ -116,7 +116,7 @@ window.ATHLETICS_CONTENT = {
       performance: '35:34', performanceNote: '-2.5m/km',
       competition: 'Vancouver Sun Run', location: 'Vancouver, BC',
       points: 525, place: 150,
-      resultsUrl: '',
+      resultsUrl: 'https://sportstats.one/event/vancouver-sun-run/leaderboard/143057',
       notes: ['PB']
     },
     {
@@ -125,7 +125,7 @@ window.ATHLETICS_CONTENT = {
       performance: '20:42.38', performanceNote: '',
       competition: 'TWU Battle of Sparta', location: 'Langley, BC',
       points: 992, place: 1,
-      resultsUrl: '',
+      resultsUrl: 'http://results.tfmeetpro.com/Valley_Royals/Battle_of_Sparta_2025/results_2.html#round_1',
       notes: ['PB']
     },
     {
@@ -134,7 +134,7 @@ window.ATHLETICS_CONTENT = {
       performance: '21:21.05', performanceNote: '',
       competition: 'UBC Open', location: 'Vancouver, BC',
       points: 940, place: 1,
-      resultsUrl: '',
+      resultsUrl: 'http://results.tfmeetpro.com/UBC_Track_and_Field/UBC_Open/results_19.html',
       notes: ['PB']
     },
     {
@@ -143,7 +143,7 @@ window.ATHLETICS_CONTENT = {
       performance: '1:38:13', performanceNote: '',
       competition: 'Canadian Track & Field Championships', location: 'Montreal, QC',
       points: 829, place: 1,
-      resultsUrl: '',
+      resultsUrl: 'https://live.athletics.ca/meets/36627/events/individual/1466186',
       notes: []
     },
     {
