@@ -111,7 +111,7 @@ window.ATHLETICS_CONTENT = {
       notes: []
     },
     {
-      date: '2026-04-19',
+      date: '2025-04-27',
       event: '10km', distanceMeters: 10000, gait: 'run', surface: 'road',
       performance: '35:34', performanceNote: '-2.5m/km',
       competition: 'Vancouver Sun Run', location: 'Vancouver, BC',
@@ -151,7 +151,7 @@ window.ATHLETICS_CONTENT = {
       event: "5000m race walk", distanceMeters: 5000, gait: "walk", surface: "track",
       performance: "DQ", performanceNote: "",
       competition: "Jesse Bent", location: "Coquitlam, BC",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "http://results.tfmeetpro.com/Ocean_Athletics/Jesse_Bent_2024/results_151.html",
       notes: []
     },
@@ -196,7 +196,7 @@ window.ATHLETICS_CONTENT = {
       event: "20km race walk", distanceMeters: 20000, gait: "walk", surface: "road",
       performance: "DQ", performanceNote: "",
       competition: "World Racewalking Tour - Dublin", location: "Dublin, IRL",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "https://worldathletics.org/competition/calendar-results/results/7202738?eventId=10229508",
       notes: []
     },
@@ -214,7 +214,7 @@ window.ATHLETICS_CONTENT = {
       event: "5000m race walk", distanceMeters: 5000, gait: "walk", surface: "track",
       performance: "DQ", performanceNote: "",
       competition: "NAIA Championships", location: "Marion, IN",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "http://live.crossroadstiming.com/meets/557382/events/21/results/F/M",
       notes: []
     },
@@ -243,14 +243,14 @@ window.ATHLETICS_CONTENT = {
       competition: "Great Treck", location: "Vancouver, BC",
       points: 156, place: 48,
       resultsUrl: "https://results.raceroster.com/v2/en-CA/results/2rqzp7bnhrv722f3/results?subEvent=151920&page=1",
-      notes: ["PB"]
+      notes: []
     },
     {
       date: "2022-10-02",
       event: "20km race walk", distanceMeters: 20000, gait: "walk", surface: "road",
       performance: "DQ", performanceNote: "",
       competition: "Ontario Racewalk Championships", location: "Ottawa, ON",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "",
       notes: []
     },
@@ -286,7 +286,7 @@ window.ATHLETICS_CONTENT = {
       event: "10,000m race walk", distanceMeters: 10000, gait: "walk", surface: "track",
       performance: "DQ", performanceNote: "",
       competition: "Pacific Distance Carnival", location: "Burnaby, BC",
-      points: 748, place: "DQ",
+      points: null, place: null,
       resultsUrl: "https://results.swanracing.ca/2022pdc/results_14.html",
       notes: []
     },
@@ -331,7 +331,7 @@ window.ATHLETICS_CONTENT = {
       event: "10,000m race walk", distanceMeters: 10000, gait: "walk", surface: "track",
       performance: "DQ", performanceNote: "",
       competition: "Harry Jerome", location: "Burnaby, BC",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "https://results.swanracing.ca/harry_jerome_2021/results_8.html",
       notes: []
     },
@@ -349,7 +349,7 @@ window.ATHLETICS_CONTENT = {
       event: "10,000m race walk", distanceMeters: 10000, gait: "walk", surface: "track",
       performance: "DQ", performanceNote: "",
       competition: "UBC Mini Meet", location: "Vancouver, BC",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "",
       notes: []
     },
@@ -365,7 +365,7 @@ window.ATHLETICS_CONTENT = {
     {
       date: "2020-08-18",
       event: "200m", distanceMeters: 200, gait: "run", surface: "track",
-      performance: "27.35", performanceNote: "-0.4",
+      performance: "27.35", performanceNote: "-0.4m/s",
       competition: "Oceans In-House Meet #2", location: "Surrey, BC",
       points: 339, place: 10,
       resultsUrl: "https://static1.squarespace.com/static/5c1befb73c3a53b27b7092d0/t/5f3d3bdd3847cc7ce8eb8065/1597848541399/ResultsAugust18TimeTrialsOceanAthletics.pdf",
@@ -394,7 +394,7 @@ window.ATHLETICS_CONTENT = {
       event: "5km", distanceMeters: 5000, gait: "run", surface: "xc",
       performance: "16:49", performanceNote: "",
       competition: "BC High School XC Championships", location: "Abbotsford, BC",
-      points: 558, place: 14,
+      points: 517, place: 14,
       resultsUrl: "https://www.racedaytiming.ca/en/races/2019/bchsxc/event/SR%20Boys/page",
       notes: ["PB"]
     },
@@ -403,7 +403,7 @@ window.ATHLETICS_CONTENT = {
       event: "5km", distanceMeters: 5000, gait: "run", surface: "xc",
       performance: "17:09", performanceNote: "",
       competition: "BC XC Championships", location: "Saanich, BC",
-      points: 507, place: 17,
+      points: 470, place: 17,
       resultsUrl: "https://www.racedaytiming.ca/en/races/2019/bcxc/event/R10%20-%205%20km",
       notes: ["PB"]
     },
@@ -419,7 +419,7 @@ window.ATHLETICS_CONTENT = {
     {
       date: "2019-10-16",
       event: "4.8km", distanceMeters: 4800, gait: "run", surface: "xc",
-      performance: "17:18", performanceNote: "",
+      performance: "17:18", performanceNote: "hand timed",
       competition: "Surrey High School XC #5", location: "Surrey, BC",
       points: null, place: 4,
       resultsUrl: "https://southfraserxc.weebly.com/uploads/2/1/3/5/21356954/crescent_park_5_october_16_2019_results.xlsx",
@@ -428,25 +428,16 @@ window.ATHLETICS_CONTENT = {
     {
       date: "2019-10-09",
       event: "4km", distanceMeters: 4000, gait: "run", surface: "xc",
-      performance: "14:17.8", performanceNote: "",
+      performance: "14:17.8", performanceNote: "hand timed",
       competition: "Surrey High School XC Race #4", location: "Surrey, BC",
       points: null, place: 3,
       resultsUrl: "https://southfraserxc.weebly.com/uploads/2/1/3/5/21356954/green_timbers_urban_forest_oct_9_2019_results_revised.xlsx",
       notes: []
     },
     {
-      date: "2019-10-06",
-      event: "4.8km", distanceMeters: 4800, gait: "run", surface: "road",
-      performance: "17:52", performanceNote: "",
-      competition: "Turkey Trot", location: "White Rock, BC",
-      points: null, place: 1,
-      resultsUrl: "",
-      notes: []
-    },
-    {
       date: "2019-10-02",
       event: "4.7km", distanceMeters: 4700, gait: "run", surface: "xc",
-      performance: "16:24", performanceNote: "",
+      performance: "16:24", performanceNote: "hand timed",
       competition: "Surrey High School XC Race #3", location: "Surrey, BC",
       points: null, place: 2,
       resultsUrl: "https://southfraserxc.weebly.com/uploads/2/1/3/5/21356954/crescent_park_xc_oct._3_2019.xlsx",
@@ -455,7 +446,7 @@ window.ATHLETICS_CONTENT = {
     {
       date: "2019-09-28",
       event: "3.8km", distanceMeters: 3800, gait: "run", surface: "xc",
-      performance: "13:12.9", performanceNote: "",
+      performance: "13:12.9", performanceNote: "hand timed",
       competition: "Festival of XC", location: "Surrey, BC",
       points: null, place: 4,
       resultsUrl: "https://www.trackie.com/results/festival-of-cross-country/7686/",
@@ -464,7 +455,7 @@ window.ATHLETICS_CONTENT = {
     {
       date: "2019-09-26",
       event: "3.5km", distanceMeters: 3500, gait: "run", surface: "xc",
-      performance: "12:20.8", performanceNote: "",
+      performance: "12:20.8", performanceNote: "hand timed",
       competition: "Surrey High School XC Race #2", location: "Surrey, BC",
       points: null, place: 3,
       resultsUrl: "https://southfraserxc.weebly.com/uploads/2/1/3/5/21356954/s2.xlsx",
@@ -473,7 +464,7 @@ window.ATHLETICS_CONTENT = {
     {
       date: "2019-09-19",
       event: "4km", distanceMeters: 4000, gait: "run", surface: "xc",
-      performance: "14:37", performanceNote: "",
+      performance: "14:37", performanceNote: "hand timed",
       competition: "Surrey High School XC Race #1", location: "Surrey, BC",
       points: null, place: 3,
       resultsUrl: "https://southfraserxc.weebly.com/uploads/2/1/3/5/21356954/s1.xlsx",
@@ -634,7 +625,7 @@ window.ATHLETICS_CONTENT = {
       competition: "Vancouver Sun Run", location: "Vancouver, BC",
       points: 485, place: 110,
       resultsUrl: "https://sportstats.one/event/vancouver-sun-run/leaderboard/103535",
-      notes: []
+      notes: ["PB"]
     },
     {
       date: "2019-04-07",
@@ -650,7 +641,7 @@ window.ATHLETICS_CONTENT = {
       event: "5000m race walk", distanceMeters: 5000, gait: "walk", surface: "track",
       performance: "DQ", performanceNote: "",
       competition: "UBC Open", location: "Vancouver, BC",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "http://results.tfmeetpro.com/TBird_Timing/UBC_Open/results_19.html",
       notes: []
     },
@@ -674,7 +665,7 @@ window.ATHLETICS_CONTENT = {
     },
     {
       date: "2019-01-01",
-      event: "8km", distanceMeters: 8000, gait: "run", surface: "road",
+      event: "8km", distanceMeters: 8000, gait: "run", surface: "xc",
       performance: "29:51.8", performanceNote: "",
       competition: "Resolution Race", location: "Surrey, BC",
       points: null, place: 8,
@@ -704,7 +695,7 @@ window.ATHLETICS_CONTENT = {
       event: "5km", distanceMeters: 5000, gait: "run", surface: "road",
       performance: "18:05", performanceNote: "",
       competition: "Great Pumpkin Run", location: "White Rock, BC",
-      points: 366, place: 1,
+      points: 351, place: 1,
       resultsUrl: "https://vancouversun.com/news/community-blogs/bootiful-day-in-white-rock-neighbourhood-for-spirited-pumpkin-run-walk",
       notes: ["PB"]
     },
@@ -740,7 +731,7 @@ window.ATHLETICS_CONTENT = {
       event: "5km", distanceMeters: 5000, gait: "run", surface: "xc",
       performance: "18:39.7", performanceNote: "",
       competition: "Festival of XC", location: "Surrey, BC",
-      points: null, place: 3,
+      points: 285, place: 3,
       resultsUrl: "https://www.trackie.com/results/festival-of-cross-country/7092/",
       notes: []
     },
@@ -758,7 +749,7 @@ window.ATHLETICS_CONTENT = {
       event: "5km", distanceMeters: 5000, gait: "run", surface: "xc",
       performance: "18:53", performanceNote: "",
       competition: "Vancouver Spirit Run", location: "Vancouver, BC",
-      points: null, place: 6,
+      points: 262, place: 6,
       resultsUrl: "https://www.racedaytiming.ca/en/races/2018/spiritrun/event/5K%20%28Sr.%20Boys%29",
       notes: []
     },
@@ -834,7 +825,7 @@ window.ATHLETICS_CONTENT = {
       event: "3000m race walk", distanceMeters: 3000, gait: "walk", surface: "track",
       performance: "DQ", performanceNote: "",
       competition: "Trevor Craven", location: "Burnaby, BC",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "https://www.trackie.com/results/2018-trevor-craven-memorial/6975/",
       notes: []
     },
@@ -1013,7 +1004,7 @@ window.ATHLETICS_CONTENT = {
       event: "5000m race walk", distanceMeters: 5000, gait: "walk", surface: "track",
       performance: "DQ", performanceNote: "",
       competition: "UBC Open", location: "Vancouver, BC",
-      points: null, place: "DQ",
+      points: null, place: null,
       resultsUrl: "https://www.tfrrs.org/results/53404/3383382/UBC_Open/Mens-5000-Race-Walk",
       notes: []
     },
@@ -1040,7 +1031,7 @@ window.ATHLETICS_CONTENT = {
       event: "5km", distanceMeters: 5000, gait: "run", surface: "xc",
       performance: "18:24", performanceNote: "",
       competition: "BC High School XC Championships", location: "Vancouver, BC",
-      points: null, place: 21,
+      points: 314, place: 21,
       resultsUrl: "https://www.racedaytiming.ca/en/races/2017/bchsxc/event/JR%20Boys",
       notes: ["PB"]
     },
@@ -1049,7 +1040,7 @@ window.ATHLETICS_CONTENT = {
       event: "3km", distanceMeters: 3000, gait: "run", surface: "xc",
       performance: "10:07", performanceNote: "",
       competition: "BC XC Championships", location: "Abbotsford, BC",
-      points: null, place: 16,
+      points: 442, place: 16,
       resultsUrl: "https://www.racedaytiming.ca/en/races/2017/bcxc/event/Race%208",
       notes: ["PB"]
     },
@@ -1085,7 +1076,7 @@ window.ATHLETICS_CONTENT = {
       event: "3km", distanceMeters: 3000, gait: "run", surface: "xc",
       performance: "12:01.5", performanceNote: "",
       competition: "Festival of XC", location: "Surrey, BC",
-      points: null, place: 12,
+      points: 114, place: 12,
       resultsUrl: "https://static1.squarespace.com/static/5c1befb73c3a53b27b7092d0/t/5c1c5b17520149b0b28fde18/1506815029943/2017FestivalOfCrossCountryResults.pdf",
       notes: []
     },
@@ -1103,7 +1094,7 @@ window.ATHLETICS_CONTENT = {
       event: "3km", distanceMeters: 3000, gait: "run", surface: "xc",
       performance: "11:01", performanceNote: "",
       competition: "Vancouver Spirit Run", location: "Vancouver, BC",
-      points: null, place: 4,
+      points: 261, place: 4,
       resultsUrl: "https://www.racedaytiming.ca/en/races/2017/spiritrun/event/3K%20%2814-15%29",
       notes: ["PB"]
     },
@@ -1121,7 +1112,7 @@ window.ATHLETICS_CONTENT = {
       event: "3km", distanceMeters: 3000, gait: "run", surface: "xc",
       performance: "11:16.8", performanceNote: "hand timed",
       competition: "Surrey XC Meet #1", location: "Surrey, BC",
-      points: null, place: 5,
+      points: 217, place: 5,
       resultsUrl: "https://fraservalleyxc.weebly.com/uploads/2/1/3/5/21356954/2017_s1.xlsx",
       notes: ["PB"]
     },
@@ -1231,7 +1222,7 @@ window.ATHLETICS_CONTENT = {
       competition: "Langley Pacific (U16)", location: "Langley, BC",
       points: null, place: 3,
       resultsUrl: "https://www.trackie.com/results/langley-pacific-invitational/6008/",
-      notes: [],
+      notes: ["PB"],
       groupKey: "run:1500:steeplechase", groupLabel: "1500m steeplechase"
     },
     {
@@ -1440,7 +1431,7 @@ window.ATHLETICS_CONTENT = {
       event: "5km", distanceMeters: 5000, gait: "run", surface: "xc",
       performance: "18:59", performanceNote: "hand timed",
       competition: "Surrey XC Race #3", location: "Surrey, BC",
-      points: 272, place: 20,
+      points: 252, place: 20,
       resultsUrl: "https://fraservalleyxc.weebly.com/uploads/2/1/3/5/21356954/s3.xlsx",
       notes: ["PB"]
     },
